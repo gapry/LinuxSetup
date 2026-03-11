@@ -4,7 +4,10 @@ test:
 install:
 	sh ./utils/install.sh
 
+ubuntu:
+	sh ./utils/ubuntu.sh
+
 fmt:
 	find . -name "*.nix" -exec nixpkgs-fmt {} +
 
-.PHONY: test install fmt
+.PHONY: test install fmt ubuntu
