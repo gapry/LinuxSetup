@@ -7,6 +7,7 @@
 
   imports = [
     ./node.nix
+    ./nvim.nix
   ];
 
   programs.home-manager.enable = true;
