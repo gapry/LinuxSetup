@@ -21,7 +21,12 @@ fi
 
 echo "Downloading configurations from $UPSTREAM..."
 
-curl -L "$UPSTREAM" | tar -xz -C "$TEMP_DIR" --strip-components=1
+curl -Lf --output "$TEMP_DIR/archive.tar.gz" "$UPSTREAM"
+
+echo "Unpacking archive..."
+
+tar -xzf "$TEMP_DIR/archive.tar.gz" -C "$TEMP_DIR" --strip-components=1
+rm -f "$TEMP_DIR/archive.tar.gz"
 
 echo "Deploying configurations to ~/.config..."
 
