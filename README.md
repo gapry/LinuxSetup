@@ -1,2 +1,5 @@
-# LinuxSetup
-My Linux Setup
+## Usage
+```
+$ make test
+$ make install
+```
