@@ -9,6 +9,7 @@
     ./node.nix
     ./nvim.nix
     ./zellij.nix
+    ./nixpkgs-fmt.nix
   ];
 
   programs.home-manager.enable = true;
