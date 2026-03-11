@@ -8,7 +8,6 @@ if status is-interactive
 
   fish_add_path $GEM_HOME/bin
   fish_add_path $BUN_INSTALL/bin
-  fish_add_path $HOME/bin/Zellij/v0.43.1/ 
   fish_add_path $HOME/.opencode/bin
 
   if test -d $HOME/.nix-profile/bin

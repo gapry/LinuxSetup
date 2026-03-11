@@ -8,6 +8,7 @@
   imports = [
     ./node.nix
     ./nvim.nix
+    ./zellij.nix
   ];
 
   programs.home-manager.enable = true;
