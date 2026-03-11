@@ -4,4 +4,7 @@ test:
 install:
 	sh ./utils/install.sh
 
-.PHONY: test install
+fmt:
+	find . -name "*.nix" -exec nixpkgs-fmt {} +
+
+.PHONY: test install fmt
