@@ -10,6 +10,7 @@
     ./nvim.nix
     ./zellij.nix
     ./nixpkgs-fmt.nix
+    ./osquery.nix
   ];
 
   programs.home-manager.enable = true;
