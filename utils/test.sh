@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -10,22 +10,22 @@ mkdir -p "$BACKUP_DIR"
 
 APPS=$(find "$REPO_ROOT/config" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
 
-echo "Backing up current configs to $BACKUP_DIR..."
-for app in $APPS; do
+find "$REPO_ROOT/config" -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -r -d '' dir; do
+  app=$(basename "$dir")
+
   if [ -d "$HOME/.config/$app" ]; then
     cp -pr "$HOME/.config/$app" "$BACKUP_DIR/"
+    echo "Backup: $BACKUP_DIR/$app"
   fi
-done
 
-echo "Syncing configurations from Repo to ~/.config..."
-for app in $APPS; do
   mkdir -p "$HOME/.config/$app"
   cp -pr "$REPO_ROOT/config/$app/." "$HOME/.config/$app/"
-  echo "Synced: $app"
+  echo "Synced: $HOME/.config/$app"
 done
 
 echo "--------------------------------------------------"
 echo "Local Test Sync Completed."
 echo "Backup saved at: $BACKUP_DIR"
+echo "--------------------------------------------------"
 
 exec fish

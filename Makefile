@@ -2,7 +2,7 @@ fmt:
 	find . -name "*.nix" -exec nixpkgs-fmt {} +
 
 test:
-	sh ./utils/test.sh
+	bash ./utils/test.sh
 
 install: ubuntu flatpak download
 
@@ -13,6 +13,6 @@ flatpak:
 	sh ./utils/flatpak.sh
 
 download:
-	sh ./utils/download.sh
+	bash ./utils/download.sh
 
 .PHONY: fmt test install ubuntu flatpak download
