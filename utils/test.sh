@@ -25,7 +25,7 @@ mkdir -p "$HOME/.config/fish"
 
 echo "Syncing configurations from Repo to ~/.config..."
 cp -pr "$REPO_ROOT/config/nix/"* "$HOME/.config/nix/"
-cp -p "$REPO_ROOT/config/fish/config.fish" "$HOME/.config/fish/config.fish"
+rsync -av "$REPO_ROOT/config/fish/" "$HOME/.config/fish/"
 
 echo "--------------------------------------------------"
 echo "Local Test Sync Completed."

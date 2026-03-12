@@ -34,7 +34,7 @@ mkdir -p "$HOME/.config/nix"
 mkdir -p "$HOME/.config/fish"
 
 cp -pr "$TEMP_DIR/config/nix/"* "$HOME/.config/nix/"
-cp -p "$TEMP_DIR/config/fish/config.fish" "$HOME/.config/fish/config.fish"
+cp -pr "$TEMP_DIR/config/fish/"* "$HOME/.config/fish/"
 
 rm -rf "$TEMP_DIR"
 
