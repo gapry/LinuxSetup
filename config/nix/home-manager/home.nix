@@ -11,6 +11,7 @@
     ./zellij.nix
     ./nixpkgs-fmt.nix
     ./osquery.nix
+    ./fio.nix
   ];
 
   programs.home-manager.enable = true;
