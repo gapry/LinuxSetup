@@ -8,8 +8,6 @@ BACKUP_DIR="$HOME/backup/LinuxSetup/local-$TIMESTAMP"
 
 mkdir -p "$BACKUP_DIR"
 
-APPS=$(find "$REPO_ROOT/config" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
-
 find "$REPO_ROOT/config" -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -r -d '' dir; do
   app=$(basename "$dir")
 
