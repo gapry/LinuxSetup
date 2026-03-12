@@ -12,6 +12,7 @@
     ./nixpkgs-fmt.nix
     ./osquery.nix
     ./fio.nix
+    ./hyperfine.nix
   ];
 
   programs.home-manager.enable = true;
