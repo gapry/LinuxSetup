@@ -1,0 +1,16 @@
+keybinds clear-defaults=true {
+}
+
+plugins {
+}
+
+load_plugins {
+}
+
+web_client {
+  font "monospace"
+}
+
+show_startup_tips false
+
+default_shell "fish"

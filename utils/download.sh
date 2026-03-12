@@ -7,34 +7,25 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 BACKUP_DIR="$HOME/backup/LinuxSetup/remote-$TIMESTAMP"
 TEMP_DIR=$(mktemp -d)
 
-echo "Backing up current configs to $BACKUP_DIR..."
-
 mkdir -p "$BACKUP_DIR"
 
-if [ -d "$HOME/.config/fish" ]; then
-  cp -pr "$HOME/.config/fish" "$BACKUP_DIR/"
-fi
-
-if [ -d "$HOME/.config/nix" ]; then
-  cp -pr "$HOME/.config/nix" "$BACKUP_DIR/"
-fi
-
 echo "Downloading configurations from $UPSTREAM..."
-
 curl -Lf --output "$TEMP_DIR/archive.tar.gz" "$UPSTREAM"
 
 echo "Unpacking archive..."
-
 tar -xzf "$TEMP_DIR/archive.tar.gz" -C "$TEMP_DIR" --strip-components=1
 rm -f "$TEMP_DIR/archive.tar.gz"
 
-echo "Deploying configurations to ~/.config..."
+APPS=$(find "$TEMP_DIR/config" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
+for app in $APPS; do
+  if [ -d "$HOME/.config/$app" ]; then
+    cp -pr "$HOME/.config/$app" "$BACKUP_DIR/"
+  fi
 
-mkdir -p "$HOME/.config/nix"
-mkdir -p "$HOME/.config/fish"
-
-cp -pr "$TEMP_DIR/config/nix/"* "$HOME/.config/nix/"
-cp -pr "$TEMP_DIR/config/fish/"* "$HOME/.config/fish/"
+  mkdir -p "$HOME/.config/$app"
+  cp -pr "$TEMP_DIR/config/$app/." "$HOME/.config/$app/"
+  echo "Synced: $app"
+done
 
 rm -rf "$TEMP_DIR"
 
