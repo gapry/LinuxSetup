@@ -27,7 +27,9 @@ if status is-interactive
     starship init fish | source
   end
 
-  osquery_init
+  if type -q osqueryi
+    osquery_init
+  end
 end
 
 function nixpkg_init
