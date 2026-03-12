@@ -1,34 +1,29 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 REPO_ROOT=$(cd "$(dirname "$0")/.." && pwd)
-
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 BACKUP_DIR="$HOME/backup/LinuxSetup/local-$TIMESTAMP"
 
-echo "Backing up current configs to $BACKUP_DIR..."
-
 mkdir -p "$BACKUP_DIR"
 
-if [ -d "$HOME/.config/fish" ]; then
-  cp -r "$HOME/.config/fish" "$BACKUP_DIR/"
-fi
+find "$REPO_ROOT/config" -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -r -d '' dir; do
+  app=$(basename "$dir")
 
-if [ -d "$HOME/.config/nix" ]; then
-  cp -r "$HOME/.config/nix" "$BACKUP_DIR/"
-fi
+  if [ -d "$HOME/.config/$app" ]; then
+    cp -pr "$HOME/.config/$app" "$BACKUP_DIR/"
+    echo "Backup: $BACKUP_DIR/$app"
+  fi
 
-echo "Ensuring target directories exist..."
-mkdir -p "$HOME/.config/nix"
-mkdir -p "$HOME/.config/fish"
-
-echo "Syncing configurations from Repo to ~/.config..."
-cp -pr "$REPO_ROOT/config/nix/"* "$HOME/.config/nix/"
-rsync -av "$REPO_ROOT/config/fish/" "$HOME/.config/fish/"
+  mkdir -p "$HOME/.config/$app"
+  cp -pr "$REPO_ROOT/config/$app/." "$HOME/.config/$app/"
+  echo "Synced: $HOME/.config/$app"
+done
 
 echo "--------------------------------------------------"
 echo "Local Test Sync Completed."
 echo "Backup saved at: $BACKUP_DIR"
+echo "--------------------------------------------------"
 
-echo "Re-run 'source ~/.config/fish/config.fish' to apply changes."
+exec fish
