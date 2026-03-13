@@ -20,6 +20,7 @@
     ./ripgrep.nix
     ./eza.nix
     ./fd.nix
+    ./glances.nix
   ];
 
   programs.home-manager.enable = true;
