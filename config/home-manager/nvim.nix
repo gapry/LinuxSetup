@@ -7,8 +7,6 @@
       gcc
       gnumake
       unzip
-      ripgrep
-      fd
     ];
   };
 }
