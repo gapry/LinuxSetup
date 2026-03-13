@@ -21,6 +21,7 @@
     ./eza.nix
     ./fd.nix
     ./glances.nix
+    ./dust.nix
   ];
 
   programs.home-manager.enable = true;
