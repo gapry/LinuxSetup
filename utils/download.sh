@@ -17,12 +17,19 @@ echo -e "${RED}[Unpack]${RESET} Extracting archive to temporary directory..."
 tar -xzf "$TEMP_DIR/archive.tar.gz" -C "$TEMP_DIR" --strip-components=1
 rm -f "$TEMP_DIR/archive.tar.gz"
 
-sync_file "$TEMP_DIR/config" "config"
-sync_file "$TEMP_DIR/local" "local"
+timestamp=$(date +%Y%m%d%H%M%S)
+backup_root="$HOME/backup/LinuxSetup/$timestamp"
+mkdir -p "$backup_root"
+
+sync_file "$TEMP_DIR/config" "config" "$backup_root"
+sync_file "$TEMP_DIR/local" "local" "$backup_root"
 
 rm -rf "$TEMP_DIR"
 
 echo "--------------------------------------------------"
 echo -e "${GREEN}Remote Installation Completed Successfully.${RESET}"
+echo -e "Backup saved at: ${BLUE}$backup_root${RESET}"
+echo "--------------------------------------------------"
 
 exec fish
+
