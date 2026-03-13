@@ -17,6 +17,7 @@
     ./duckdb.nix
     ./fzf.nix
     ./zoxide.nix
+    ./ripgrep.nix
   ];
 
   programs.home-manager.enable = true;
