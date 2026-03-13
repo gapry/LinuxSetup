@@ -14,6 +14,7 @@
     ./fio.nix
     ./hyperfine.nix
     ./postgresql.nix
+    ./duckdb.nix
   ];
 
   programs.home-manager.enable = true;
