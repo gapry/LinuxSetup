@@ -24,6 +24,7 @@
     ./dust.nix
     ./delta.nix
     ./bat.nix
+    ./tig.nix
   ];
 
   programs.home-manager.enable = true;
