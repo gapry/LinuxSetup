@@ -1,10 +1,34 @@
 keybinds clear-defaults=true {
+  shared_except "tmux" "locked" {
+    bind "Ctrl a" { SwitchToMode "Tmux"; }
+  }
+
+  tmux {
+    bind "n" { NewTab; SwitchToMode "Normal"; }
+    bind "x" { CloseTab; SwitchToMode "Normal"; }
+    bind "l" { GoToNextTab; SwitchToMode "Normal"; }
+    bind "h" { GoToPreviousTab; SwitchToMode "Normal"; }
+
+    bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
+
+    bind "Ctrl [" { SwitchToMode "Normal"; }
+    bind "Ctrl a" { Write 1; SwitchToMode "Normal"; }
+  }
+
+  renametab {
+    bind "Enter" { SwitchToMode "Normal"; }
+    bind "Ctrl [" { UndoRenameTab; SwitchToMode "Normal"; }
+  }
 }
 
 plugins {
+  tab-bar { path "tab-bar"; }
+  status-bar { path "status-bar"; }
 }
 
 load_plugins {
+  tab-bar
+  status-bar
 }
 
 web_client {
