@@ -8,7 +8,7 @@ source "$REPO_ROOT/utils/color.sh"
 source "$REPO_ROOT/utils/sync_file.sh"
 
 timestamp=$(date +%Y%m%d%H%M%S)
-backup_root="$HOME/backup/LinuxSetup/$timestamp"
+backup_root="$HOME/backup/LinuxSetup/local-$timestamp"
 mkdir -p "$backup_root"
 
 sync_file "$REPO_ROOT/config" "config" "$backup_root"

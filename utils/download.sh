@@ -18,7 +18,7 @@ tar -xzf "$TEMP_DIR/archive.tar.gz" -C "$TEMP_DIR" --strip-components=1
 rm -f "$TEMP_DIR/archive.tar.gz"
 
 timestamp=$(date +%Y%m%d%H%M%S)
-backup_root="$HOME/backup/LinuxSetup/$timestamp"
+backup_root="$HOME/backup/LinuxSetup/remote-$timestamp"
 mkdir -p "$backup_root"
 
 sync_file "$TEMP_DIR/config" "config" "$backup_root"
