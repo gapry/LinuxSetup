@@ -22,6 +22,7 @@
     ./fd.nix
     ./glances.nix
     ./dust.nix
+    ./delta.nix
   ];
 
   programs.home-manager.enable = true;
