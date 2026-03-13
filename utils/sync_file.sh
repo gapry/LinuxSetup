@@ -4,6 +4,10 @@ sync_file() {
   local src_path="$1"
   local dst_name="$2"
   local target_base="$HOME/.$dst_name"
+  local timestamp=$(date +%Y%m%d%H%M%S)
+  local backup_root="$HOME/backup/LinuxSetup/$timestamp"
+
+  mkdir -p "$backup_root"
 
   if [ ! -d "$src_path" ]; then return; fi
 
@@ -12,7 +16,7 @@ sync_file() {
   find "$src_path" -type f -print0 | while IFS= read -r -d '' file; do
     local rel_path="${file#$src_path/}"
     local target_file="$target_base/$rel_path"
-    local backup_file="$BACKUP_ROOT/$dst_name/$rel_path"
+    local backup_file="$backup_root/$dst_name/$rel_path"
 
     if [ -f "$target_file" ]; then
       mkdir -p "$(dirname "$backup_file")"
@@ -24,4 +28,7 @@ sync_file() {
     cp -p "$file" "$target_file"
     echo -e "  ${BLUE}[Synced]${RESET} $file -> $target_file"
   done
+
+  echo "--------------------------------------------------"
+  echo -e "Backup saved at: ${BLUE}$backup_root${RESET}"
 }
