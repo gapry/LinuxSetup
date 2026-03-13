@@ -7,7 +7,7 @@ sync_file() {
 
   if [ ! -d "$src_path" ]; then return; fi
 
-  echo -e "${RED}[Sync]${RESET} $src_dir -> $target_base"
+  echo -e "${RED}[Sync]${RESET} $src_path -> $target_base"
 
   find "$src_path" -type f -print0 | while IFS= read -r -d '' file; do
     local rel_path="${file#$src_path/}"
