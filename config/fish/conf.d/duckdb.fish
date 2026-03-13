@@ -1,0 +1,5 @@
+set -gx DUCKDB_EXTENSION_DIRECTORY $HOME/.duckdb/extensions
+
+if not test -d $DUCKDB_EXTENSION_DIRECTORY
+  mkdir -p $DUCKDB_EXTENSION_DIRECTORY
+end
