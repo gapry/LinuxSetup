@@ -15,6 +15,7 @@
     ./hyperfine.nix
     ./postgresql.nix
     ./duckdb.nix
+    ./fzf.nix
   ];
 
   programs.home-manager.enable = true;
