@@ -25,6 +25,7 @@
     ./delta.nix
     ./bat.nix
     ./tig.nix
+    ./doggo.nix
   ];
 
   programs.home-manager.enable = true;
