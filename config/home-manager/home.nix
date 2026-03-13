@@ -19,6 +19,7 @@
     ./zoxide.nix
     ./ripgrep.nix
     ./eza.nix
+    ./fd.nix
   ];
 
   programs.home-manager.enable = true;
