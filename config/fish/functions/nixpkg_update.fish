@@ -1,5 +1,5 @@
 function nixpkg_update
-  set -l nix_dir "$HOME/.config/nix"
+  set -l nix_dir "$HOME/.config/home-manager"
   set -l user (whoami)
   set -l last_run_file "$nix_dir/.last_success"
 

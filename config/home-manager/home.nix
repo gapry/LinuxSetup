@@ -1,4 +1,4 @@
-{ pkgs, userConfig, ... }:
+{ pkgs, userConfig, config, ... }:
 
 {
   home.username = userConfig.username;
@@ -13,6 +13,7 @@
     ./osquery.nix
     ./fio.nix
     ./hyperfine.nix
+    ./postgresql.nix
   ];
 
   programs.home-manager.enable = true;

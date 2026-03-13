@@ -1,5 +1,5 @@
 function nixpkg_init
-  set -l nix_dir "$HOME/.config/nix"
+  set -l nix_dir "$HOME/.config/home-manager"
   set -l user (whoami)
 
   if test -d $nix_dir
