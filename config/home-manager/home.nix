@@ -16,6 +16,7 @@
     ./postgresql.nix
     ./duckdb.nix
     ./fzf.nix
+    ./zoxide.nix
   ];
 
   programs.home-manager.enable = true;
