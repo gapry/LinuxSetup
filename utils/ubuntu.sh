@@ -6,7 +6,7 @@ echo "Updating Ubuntu..."
 sudo apt update
 
 echo "Installing Ubuntu packages..."
-sudo apt install -y $(cat pkgs/ubuntu/packages.txt)
+sudo apt install -y $(cat pkgs/ubuntu/packages.list)
 
 if ! groups | grep -q -w "nix-users"; then
   user=$(whoami)
