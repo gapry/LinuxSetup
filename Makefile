@@ -12,7 +12,10 @@ ubuntu:
 flatpak:
 	sh ./utils/flatpak.sh
 
+snap:
+	sh ./utils/snap.sh
+
 download:
 	bash ./utils/download.sh
 
-.PHONY: fmt test install ubuntu flatpak download
+.PHONY: fmt test install ubuntu flatpak snap download
