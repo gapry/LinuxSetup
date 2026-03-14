@@ -29,6 +29,7 @@
     ./xh.nix
     ./jnv.nix
     ./choose.nix
+    ./tldr.nix
   ];
 
   programs.home-manager.enable = true;
