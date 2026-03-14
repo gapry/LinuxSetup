@@ -37,6 +37,7 @@
     ./fastfetch.nix
     ./lstopo.nix
     ./inxi.nix
+    ./docker.nix
   ];
 
   programs.home-manager.enable = true;
