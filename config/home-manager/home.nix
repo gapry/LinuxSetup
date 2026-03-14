@@ -33,6 +33,7 @@
     ./procs.nix
     ./duf.nix
     ./ncdu.nix
+    ./yazi.nix
   ];
 
   programs.home-manager.enable = true;
