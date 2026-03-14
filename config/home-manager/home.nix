@@ -32,6 +32,7 @@
     ./tldr.nix
     ./procs.nix
     ./duf.nix
+    ./ncdu.nix
   ];
 
   programs.home-manager.enable = true;
