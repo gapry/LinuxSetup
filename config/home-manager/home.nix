@@ -27,6 +27,7 @@
     ./tig.nix
     ./doggo.nix
     ./xh.nix
+    ./jnv.nix
   ];
 
   programs.home-manager.enable = true;
