@@ -38,6 +38,7 @@
     ./lstopo.nix
     ./inxi.nix
     ./docker.nix
+    ./pcstat.nix
   ];
 
   programs.home-manager.enable = true;
