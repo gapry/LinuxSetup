@@ -21,8 +21,10 @@ timestamp=$(date +%Y%m%d%H%M%S)
 backup_root="$HOME/backup/LinuxSetup/remote-$timestamp"
 mkdir -p "$backup_root"
 
-sync_file "$TEMP_DIR/home/config" "config" "$backup_root"
-sync_file "$TEMP_DIR/home/local" "local" "$backup_root"
+dirs=("config" "local")
+for dir in "${dirs[@]}"; do
+  sync_file "$TEMP_DIR/home/$dir" "$dir" "$backup_root"
+done
 
 rm -rf "$TEMP_DIR"
 

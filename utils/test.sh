@@ -11,8 +11,10 @@ timestamp=$(date +%Y%m%d%H%M%S)
 backup_root="$HOME/backup/LinuxSetup/local-$timestamp"
 mkdir -p "$backup_root"
 
-sync_file "$REPO_ROOT/home/config" "config" "$backup_root"
-sync_file "$REPO_ROOT/home/local" "local" "$backup_root"
+dirs=("config" "local")
+for dir in "${dirs[@]}"; do
+  sync_file "$REPO_ROOT/home/$dir" "$dir" "$backup_root"
+done
 
 echo "--------------------------------------------------"
 echo -e "${GREEN}Local Test Sync Completed Successfully.${RESET}"
