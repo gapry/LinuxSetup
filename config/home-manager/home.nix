@@ -34,6 +34,7 @@
     ./duf.nix
     ./ncdu.nix
     ./yazi.nix
+    ./fastfetch.nix
   ];
 
   programs.home-manager.enable = true;
