@@ -1,19 +1,17 @@
 #!/bin/bash
 
 sync_file() {
-  local src_path="$1"
-  local dst_name="$2"
-  local backup_root="$3"
-  local target_base="$HOME/.$dst_name"
-  
-  if [ ! -d "$src_path" ]; then return; fi
+  local src_root="$1"
+  local backup_root="$2"
 
-  echo -e "${RED}[Sync]${RESET} $src_path -> $target_base"
+  if [ ! -d "$src_root" ]; then return; fi
 
-  find "$src_path" -type f -print0 | while IFS= read -r -d '' file; do
-    local rel_path="${file#$src_path/}"
-    local target_file="$target_base/$rel_path"
-    local backup_file="$backup_root/$dst_name/$rel_path"
+  echo -e "${RED}[Sync]${RESET} $src_root -> $backup_root"
+
+  find "$src_root" -type f -print0 | while IFS= read -r -d '' file; do
+    local rel_path="${file#$src_root/}"
+    local target_file="$HOME/$rel_path"
+    local backup_file="$backup_root/$rel_path"
 
     if [ -f "$target_file" ]; then
       mkdir -p "$(dirname "$backup_file")"
