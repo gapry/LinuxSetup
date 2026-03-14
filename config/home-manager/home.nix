@@ -35,6 +35,7 @@
     ./ncdu.nix
     ./yazi.nix
     ./fastfetch.nix
+    ./lstopo.nix
   ];
 
   programs.home-manager.enable = true;
