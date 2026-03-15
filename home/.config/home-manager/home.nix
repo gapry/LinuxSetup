@@ -1,45 +1,34 @@
-{ pkgs, userConfig, config, ... }:
+{ pkgs, userConfig, config, lib, ... }:
 
 {
   home.username = userConfig.username;
   home.homeDirectory = userConfig.homeDirectory;
   home.stateVersion = "25.11";
 
-  imports = [
-    ./node.nix
-    ./nvim.nix
-    ./zellij.nix
-    ./nixpkgs-fmt.nix
-    ./osquery.nix
-    ./fio.nix
-    ./hyperfine.nix
-    ./postgresql.nix
-    ./duckdb.nix
-    ./fzf.nix
-    ./zoxide.nix
-    ./ripgrep.nix
-    ./eza.nix
-    ./fd.nix
-    ./glances.nix
-    ./dust.nix
-    ./delta.nix
-    ./bat.nix
-    ./tig.nix
-    ./doggo.nix
-    ./xh.nix
-    ./jnv.nix
-    ./choose.nix
-    ./tldr.nix
-    ./procs.nix
-    ./duf.nix
-    ./ncdu.nix
-    ./yazi.nix
-    ./fastfetch.nix
-    ./lstopo.nix
-    ./inxi.nix
-    ./docker.nix
-    ./pcstat.nix
-  ];
+  imports =
+    let
+      content = builtins.readDir ./.;
+      files = builtins.attrNames content;
+      isModule = name:
+        name != "home.nix" &&
+        name != "flake.nix" &&
+        lib.hasSuffix ".nix" name &&
+        content.${name} == "regular";
+    in
+    map (name: ./. + "/${name}") (builtins.filter isModule files);
+
+  targets.genericLinux.enable = true;
+
+  nix = {
+    package = pkgs.nix;
+
+    enable = true;
+
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+  };
 
   programs.home-manager.enable = true;
 }
