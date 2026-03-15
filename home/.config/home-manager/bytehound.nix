@@ -93,8 +93,4 @@ let
 in
 {
   home.packages = [ bytehound ];
-
-  home.file.".config/fish/conf.d/bytehound.fish".text = ''
-    set -gx BYTEHOUND_LIBRARY_PATH "${bytehound}/lib/libbytehound.so"
-  '';
 }
