@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [ "$EUID" -ne 0 ]; then
   echo "Permission denied"
   exec sudo "$0" "$@"
@@ -8,7 +10,7 @@ fi
 if [ -f "etc/NetworkManager/NetworkManager.conf" ]; then
   if [ -f "/etc/NetworkManager/NetworkManager.conf" ]; then
     echo "[Back] NetworkManager.conf to NetworkManager.conf.bak"
-    cp /etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf.bak
+    cp /etc/NetworkManager/NetworkManager.conf "/etc/NetworkManager/NetworkManager.conf.bak-$(date +'%Y%m%d-%H%M%S')"
   fi
 
   echo "[Deploy] Upstream NetworkManager.conf"
@@ -27,14 +29,14 @@ if [ -z "$GW_DEV" ]; then
   exit 1
 fi
 
-CON_NAME=$(nmcli -t -f NAME,DEVICE connection show --active | grep ":$GW_DEV$" | cut -d: -f1)
+CON_NAME=$(nmcli -t -f NAME,DEVICE connection show --active | grep ":${GW_DEV}$" | cut -d: -f1)
 echo "[Connection] $CON_NAME"
 
 if [ -n "$CON_NAME" ]; then
   nmcli connection modify "$CON_NAME" \
     ipv4.dns "1.1.1.1"                \
     ipv4.ignore-auto-dns yes          \
-    ipv6.dns "::1"                    \
+    ipv6.dns "2606:4700:4700::1111"   \
     ipv6.ignore-auto-dns yes
 
   nmcli connection up "$CON_NAME"
