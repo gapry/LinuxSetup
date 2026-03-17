@@ -7,6 +7,6 @@
   # sudo $(which nvme) smart-log /dev/<nvme>
   #
   home.packages = [
-    pkgs.nvme-cli 
+    pkgs.nvme-cli
   ];
 }
