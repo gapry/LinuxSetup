@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -10,11 +11,19 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs @ { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
 
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+
+        overlays = [
+          (final: prev: {
+            unstable = import inputs.nixpkgs-unstable { inherit system; };
+          })
+        ];
+      };
 
       userConfig = {
         username = builtins.getEnv "USER";
