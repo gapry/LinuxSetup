@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }:
     let
       system = "x86_64-linux";
 
@@ -20,7 +20,7 @@
 
         overlays = [
           (final: prev: {
-            unstable = import inputs.nixpkgs-unstable { inherit system; };
+            unstable = import nixpkgs-unstable { inherit system; };
           })
         ];
       };
