@@ -12,7 +12,7 @@
     };
 
     Service = {
-      Type = "forking";
+      Type = "simple";
       ExecStart = "${pkgs.gnu-shepherd}/bin/shepherd";
       ExecStop = "${pkgs.gnu-shepherd}/bin/herd stop root";
       Restart = "on-failure";
