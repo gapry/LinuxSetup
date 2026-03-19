@@ -5,7 +5,6 @@ function reset_shepherd
   systemctl --user daemon-reload
   systemctl --user reset-failed shepherd
   systemctl --user start shepherd
-  systemctl --user start shepherd
   sleep 0.5
   systemctl --user status shepherd
 end
