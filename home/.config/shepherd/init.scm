@@ -1,7 +1,16 @@
 (use-modules (shepherd service))
 
-(load (string-append (getenv "HOME") "/.config/shepherd/cloudflared.scm"))
+(define config-dir (string-append (getenv "HOME") "/.config/shepherd/"))
 
-(register-services (list dns-service))
+(load (string-append config-dir "cloudflared.scm"))
+(load (string-append config-dir "redis.scm"))
 
-(start-in-the-background '(dns))
+(define services-list
+  (list dns-service 
+        redis-service))
+
+(register-services services-list)
+
+(define daemon-list '(dns redis))
+
+(start-in-the-background daemon-list)

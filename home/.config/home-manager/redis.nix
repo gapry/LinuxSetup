@@ -7,6 +7,7 @@ let
 
   redisFormat = pkgs.formats.keyValue {
     listsAsDuplicateKeys = true;
+    mkKeyValue = k: v: "${k} ${toString v}";
   };
 
   redisConfig = {
@@ -28,23 +29,6 @@ in
     redis
   ];
 
-  systemd.user.services.redis = {
-    Unit = {
-      Description = "Redis Key-Value Store";
-      After = [ "network.target" ];
-    };
-
-    Service = {
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${dataDir} ${runtimeDir}";
-      ExecStart = "${redis}/bin/redis-server ${confFile}";
-
-      ExecStop = "${redis}/bin/redis-cli -s ${runtimeDir}/redis.sock shutdown";
-      Restart = "on-failure";
-      Type = "simple";
-    };
-
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
+  home.file.".config/redis/redis.conf".source = confFile;
 }
+
