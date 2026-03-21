@@ -1,17 +1,23 @@
 import XMonad
-import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Util.Run (spawnPipe)
-import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.StatusBar
+import XMonad.Util.EZConfig (additionalKeysP)
 
-main :: IO ()
-main = xmonad $ docks def
-    { terminal           = "alacritty"
-    , modMask            = mod4Mask
-    , borderWidth        = 2
-    , normalBorderColor  = "#333333"
-    , focusedBorderColor = "#00bbff"
-    , startupHook        = spawnOnce "alacritty"
-    } `additionalKeys`
-    [ ((mod4Mask, xK_p), spawn "dmenu_run") ]
+import Config
+import Utility
+import Bindkeys
+import Hooks
+
+prettyPrinter = statusBarProp "xmobar" (pure defaultPrettyPrinter)
+
+main = xmonad . withEasySB prettyPrinter def . ewmh . docks $ def
+  { modMask            = mod4Mask
+  , terminal           = defaultTerminal
+  , borderWidth        = 2
+  , focusedBorderColor = "#268bd2"
+  , normalBorderColor  = "#002b36"
+  , workspaces         = defaultWorkspaces
+  , manageHook         = defaultManageHook
+  , startupHook        = defaultStartupHook
+  } `additionalKeysP` (defaultKeys defaultBrowser defaultTerminal)
