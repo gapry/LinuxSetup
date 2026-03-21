@@ -4,14 +4,14 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
-  . $HOME/.nix-profile/etc/profile.d/nix.sh; 
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi 
