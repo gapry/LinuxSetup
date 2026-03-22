@@ -1,5 +1,5 @@
 fmt:
-	find . -name "*.nix" -exec nixpkgs-fmt {} +
+	find . -path "./.git" -prune -o -name "*.nix" -exec nixpkgs-fmt {} +
 
 test:
 	bash ./utils/test.sh
@@ -18,4 +18,7 @@ snap:
 download:
 	bash ./utils/download.sh
 
-.PHONY: fmt test install ubuntu flatpak snap download
+xmonad-test:
+	bash ./utils/xmonad-test.sh
+
+.PHONY: fmt test install ubuntu flatpak snap download xmonad-test

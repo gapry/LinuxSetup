@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ghc --make xmonad.hs \
+  -i \
+  -ilib \
+  -fforce-recomp \
+  -main-is main \
+  -v0 \
+  -outputdir "$(dirname "$1")" \
+  -o "$1"

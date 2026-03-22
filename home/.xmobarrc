@@ -1,0 +1,20 @@
+Config { font = "xft:DejaVu Sans:weight=bold:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = []
+       , bgColor = "#2e3440"
+       , fgColor = "#d8dee9"
+       , position = Top
+       , lowerOnStart = True
+       , hideOnStart = False
+       , allDesktops = True
+       , persistent = True
+       , iconRoot = "."
+       , commands = [ Run Date "%Y-%m-%d <fc=#81a1c1>%H:%M:%S</fc> %A" "date" 10
+                    , Run Network "wlp5s0" ["-L","0","-H","32", "--normal","#81a1c1","--high","#bf616a"] 10
+                    , Run Cpu ["-L","3","-H","50", "--normal","#81a1c1","--high","#bf616a"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run UnsafeStdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %UnsafeStdinReader% }{ %cpu% | %memory% | %wlp5s0% | %date% "
+       }
