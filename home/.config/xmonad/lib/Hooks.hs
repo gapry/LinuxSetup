@@ -5,16 +5,22 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Actions.SpawnOn (spawnOn, manageSpawn)
+
 import Config
 import Utility
 
+xmobarStatusBar = statusBarProp "/usr/bin/xmobar" (pure defaultPrettyPrinter)
+
 defaultStartupHook = do
-  spawnOnce defaultTerminal
+  spawnOn workspace1 defaultTerminal
+  spawnOn workspace2 defaultBrowser
 
 defaultManageHook = composeAll
-  [ isBrowser             --> doShift workspace1
-  , className =? "Fcitx5" --> doIgnore
+  [ manageSpawn 
   , manageDocks
+  , isBrowser             --> doShift workspace1
+  , className =? "Fcitx5" --> doIgnore
   , manageHook def
   ]
 
