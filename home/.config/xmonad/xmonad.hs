@@ -1,7 +1,7 @@
 import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.StatusBar
+import XMonad.Hooks.DynamicLog
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Actions.SpawnOn (manageSpawn)
 
@@ -12,7 +12,6 @@ import Hooks
 
 main = xmonad 
      . docks 
-     . withEasySB xmobarStatusBar def 
      . ewmh 
      $ def
   { modMask            = mod4Mask
@@ -22,5 +21,6 @@ main = xmonad
   , normalBorderColor  = colorNormal
   , workspaces         = defaultWorkspaces
   , manageHook         = manageSpawn <> defaultManageHook
-  , startupHook        = startupHook def <+> defaultStartupHook
+  , startupHook        = defaultStartupHook
+  , logHook            = dynamicLogWithPP defaultPrettyPrinter
   } `additionalKeysP` (defaultKeys defaultBrowser defaultTerminal)

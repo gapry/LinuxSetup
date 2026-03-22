@@ -13,4 +13,5 @@ defaultKeys browser terminal =
   , ("M-<Return>", spawn terminal)
   , ("M-<Space>", sendMessage NextLayout)
   , ("M-q", spawn "xmonad --recompile; xmonad --restart")
+  , ("M-p", spawn "rofi -show drun -show-icons")
   ]
