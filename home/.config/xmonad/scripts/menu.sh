@@ -6,7 +6,7 @@ chosen=$(echo -e "$options" | rofi -dmenu -i -p "System:" -theme-str 'window {wi
 
 case $chosen in
   Lock)
-    i3lock 
+    i3lock -c 2e3440
     ;;
   Logout)
     pkill xmonad

@@ -10,7 +10,7 @@ import Config
 import Utility
 
 defaultStartupHook = do
-  spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 0 --transparent true --alpha 0 --tint 0x002b36 --height 22"
+  spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 0 --transparent true --alpha 0 --tint 0x2e3440 --height 22"
   spawnOnce "nm-applet"
   spawnOnce "volumeicon"
   spawnOn workspace1 defaultTerminal
