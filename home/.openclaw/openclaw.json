@@ -1,0 +1,223 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": OPENCLAW_AGENTS_DEFAULTS_WORKSPACE,
+      "pdfModel": {
+        "primary": "litellm/claude-opus-4.5"
+      },
+      "pdfMaxBytesMb": 20,
+      "pdfMaxPages": 50,
+      "models": {
+        "litellm/claude-haiku-4-5-20251001": {},
+        "litellm/claude-haiku-4-5": {},
+        "litellm/claude-opus-4.5": {},
+        "litellm/claude-opus-4.6": {},
+        "litellm/claude-opus-4-6": {},
+        "litellm/claude-opus-4.6-fast": {},
+        "litellm/claude-opus-41": {},
+        "litellm/claude-sonnet-4": {},
+        "litellm/claude-sonnet-4.5": {},
+        "litellm/claude-sonnet-4.6": {},
+        "litellm/claude-sonnet-4-6": {}
+      },
+      "model": {
+        "primary": "litellm/claude-opus-4.5" 
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": {
+        "source": "env",
+        "provider": "default",
+        "id": "OPENCLAW_GATEWAY_TOKEN"
+      }
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send",
+        "sms.search"
+      ]
+    },
+    "controlUi": {
+      "allowInsecureAuth": true
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "tools": {
+    "profile": "coding"
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "litellm": {
+        "baseUrl": "http://localhost:4000",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "claude-haiku-4-5-20251001",
+            "name": "Claude Haiku 4.5 (20251001)",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-haiku-4-5",
+            "name": "Claude Haiku 4.5",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-opus-4.5",
+            "name": "Claude Opus 4.5",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-opus-4.6",
+            "name": "Claude Opus 4.6",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-opus-4-6",
+            "name": "Claude Opus 4.6 (Alias)",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-opus-4.6-fast",
+            "name": "Claude Opus 4.6 Fast",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-opus-41",
+            "name": "Claude Opus 41",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-sonnet-4",
+            "name": "Claude Sonnet 4",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-sonnet-4.5",
+            "name": "Claude Sonnet 4.5",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-sonnet-4.6",
+            "name": "Claude Sonnet 4.6",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "name": "Claude Sonnet 4.6 (Alias)",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "auth": {
+    "profiles": {
+      "litellm:default": {
+        "provider": "litellm",
+        "mode": "api_key"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "ollama": {
+        "config": {
+          "discovery": {
+            "enabled": false
+          }
+        }
+      },
+      "litellm": {
+        "enabled": true
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": OPENCLAW_CHANNELS_TELEGRAM_BOT_TOKEN,
+      "dmPolicy": "allowlist",
+      "allowFrom": OPENCLAW_CHANNELS_TELEGRAM_ALLOW_USERS_ID
+    }
+  }
+}
+
