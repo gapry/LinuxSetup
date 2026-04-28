@@ -11,6 +11,9 @@ keybinds clear-defaults=true {
 
     bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
 
+    bind "v" { NewPane "Right"; SwitchToMode "Normal"; }
+    bind "p" { FocusNextPane; SwitchToMode "Normal"; }
+
     bind "Alt [" { SwitchToMode "Normal"; }
     bind "Alt a" { Write 1; SwitchToMode "Normal"; }
   }
