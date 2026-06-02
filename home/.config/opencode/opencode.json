@@ -1,16 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "nvidia": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "NVIDIA NIM",
-      "options": {
-        "baseURL": "https://integrate.api.nvidia.com/v1",
-        "apiKey": "{env:NVIDIA_API_KEY}"
-      }
-    },
     "ollama": {
       "models": {
+        "codegemma:2b": {
+          "name": "codegemma:2b [Ollama]"
+        },
         "llama3.2:latest": {
           "name": "llama3.2:latest [Ollama]"
         }
@@ -18,8 +13,17 @@
       "name": "Ollama",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
-        "baseURL": "http://localhost:11434/v1"
+        "baseURL": "{env:OPENCODE_HOST}/v1"
+      }
+    },
+    "nvidia": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "NVIDIA NIM",
+      "options": {
+        "baseURL": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "{env:NVIDIA_API_KEY}"
       }
     }
   }
 }
+
