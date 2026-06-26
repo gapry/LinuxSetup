@@ -8,4 +8,5 @@ if test -d "$HOME/Android/Sdk"
   
   fish_add_path "$ANDROID_SDK_ROOT/emulator"
   fish_add_path "$ANDROID_SDK_ROOT/platform-tools"
+  fish_add_path "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
 end
