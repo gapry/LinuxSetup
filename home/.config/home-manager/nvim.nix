@@ -10,6 +10,7 @@
       gcc
       gnumake
       unzip
+      tree-sitter
     ];
   };
 }
