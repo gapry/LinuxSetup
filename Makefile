@@ -21,4 +21,10 @@ download:
 xmonad-test:
 	bash ./utils/xmonad-test.sh
 
-.PHONY: fmt test install ubuntu flatpak snap download xmonad-test
+nixpkgs-init:
+	fish -c 'nixpkg_init'
+
+nixpkgs-update:
+	fish -c 'nixpkg_update'
+
+.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update
