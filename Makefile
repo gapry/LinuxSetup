@@ -27,4 +27,7 @@ nixpkgs-init:
 nixpkgs-update:
 	fish -c 'nixpkg_update'
 
-.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update
+nixpkgs-gc:
+	fish -c 'nixpkg_gc'
+
+.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update nixpkgs-gc
