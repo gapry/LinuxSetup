@@ -48,6 +48,8 @@ let
     };
 
     NODE_OPTIONS = "--openssl-legacy-provider";
+    # Bundled mimalloc uses ATOMIC_VAR_INIT, which was removed in C23.
+    CFLAGS = "-std=gnu17";
     dontUseCmakeConfigure = true;
 
     buildPhase = ''

@@ -1,4 +1,4 @@
-{ pkgs, userConfig, config, lib, ... }:
+{ userConfig, lib, ... }:
 
 {
   home.username = userConfig.username;
@@ -18,17 +18,4 @@
     map (name: ./. + "/${name}") (builtins.filter isModule files);
 
   targets.genericLinux.enable = true;
-
-  nix = {
-    package = pkgs.nix;
-
-    enable = true;
-
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
-    };
-  };
-
-  programs.home-manager.enable = true;
 }

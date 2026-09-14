@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./fzf.nix ];
+
   programs.navi = {
     enable = true;
 

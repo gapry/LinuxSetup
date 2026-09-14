@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./nvim.nix ];
+
   programs.yazi = {
     enable = true;
 

@@ -30,4 +30,10 @@ nixpkgs-update:
 nixpkgs-gc:
 	fish -c 'nixpkg_gc'
 
-.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update nixpkgs-gc
+nixpkgs-channel-version:
+	nix eval --inputs-from ~/.config/home-manager nixpkgs#lib.version 
+
+nixpkgs-show-generations:
+	home-manager generations
+
+.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update nixpkgs-gc nixpkgs-channel-version nixpkgs-show-generations
