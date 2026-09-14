@@ -3,8 +3,6 @@
 {
   home.packages = [
     pkgs.nodejs_24
-    pkgs.nodePackages.pnpm
-    pkgs.nodePackages.yarn
   ];
 
   home.sessionVariables = {
