@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    (config.lib.nixGL.wrappers.nvidia pkgs.gnuradio)
+    (config.lib.nixGL.wrap pkgs.gnuradio)
   ];
 }
 

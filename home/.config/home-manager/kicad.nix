@@ -2,6 +2,6 @@
 
 {
   home.packages = [
-    (config.lib.nixGL.wrappers.nvidia pkgs.kicad)
+    (config.lib.nixGL.wrap pkgs.kicad)
   ];
 }
