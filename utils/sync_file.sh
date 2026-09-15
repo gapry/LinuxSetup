@@ -23,4 +23,9 @@ sync_file() {
     cp -p "$file" "$target_file"
     echo -e "  ${BLUE}[Synced]${RESET} $file -> $target_file"
   done
+
+  local dir_applications="$HOME/.local/share/applications"
+  if [ -d "$dir_applications" ] && command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database "$dir_applications"
+  fi
 }

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FreeCAD
+Exec=/home/gapry/.nix-profile/bin/FreeCAD - --single-instance %F
+Icon=/home/gapry/.nix-profile/share/icons/hicolor/scalable/apps/org.freecad.FreeCAD.svg
+Terminal=false
+Categories=Graphics;Science;Engineering;
+StartupNotify=true
+StartupWMClass=FreeCAD
