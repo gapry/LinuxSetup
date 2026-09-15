@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MATLAB R2026a
+Exec=/home/gapry/bin/matlab/R2026a/bin/matlab -desktop
+Icon=/home/gapry/bin/matlab/R2026a/bin/glnxa64/cef_resources/matlab_icon.png
+Terminal=false
+Categories=Science;Math;
+StartupWMClass=MATLAB R2026a Update 5

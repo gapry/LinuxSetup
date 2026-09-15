@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=GNU Radio Companion
+Exec=/home/gapry/.nix-profile/bin/gnuradio-companion %F
+Icon=/home/gapry/.nix-profile/lib/python3.13/site-packages/gnuradio/grc/gui/icon.png
+Terminal=false
+Categories=Development;Science;Engineering;
+StartupWMClass=.gnuradio-companion-wrapped
