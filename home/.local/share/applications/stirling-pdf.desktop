@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Stirling-PDF
+Comment=Locally hosted web application that allows you to perform various operations on PDF files
+TryExec=/home/gapry/.nix-profile/bin/Stirling-PDF
+Exec=/home/gapry/.nix-profile/bin/Stirling-PDF %F
+Icon=/home/gapry/.nix-profile/share/icons/hicolor/128x128/apps/Stirling-PDF.png
+Terminal=false
+MimeType=application/pdf;x-scheme-handler/stirlingpdf;
+Categories=Office;Graphics;Utility;
+Actions=open-file;
+StartupNotify=true
+StartupWMClass=Stirling-PDF
+
+[Desktop Action open-file]
+Name=Open PDF File
+Exec=/home/gapry/.nix-profile/bin/Stirling-PDF %F
