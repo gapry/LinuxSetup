@@ -85,14 +85,14 @@ OPENCLAW_CHANNELS_TELEGRAM_ALLOW_USERS_ID=
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
+### Codex
+```fish
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+```
+
 ### GitHub Copilot CLI
 ```fish
 npm install -g @github/copilot
-```
-
-### Codex
-```fish
-npm install -g @openai/codex
 ```
 
 ### LiteLLM
@@ -107,6 +107,10 @@ pipx install 'litellm[proxy]'
 
 ### Shepherd
 ```fish
+systemctl --user restart shepherd
+```
+
+```fish
 herd start litellm-anthropic
 herd status litellm-anthropic
 herd restart litellm-anthropic
@@ -118,6 +122,3 @@ herd restart litellm-openai
 herd stop litellm-openai
 ```
 
-```fish
-systemctl --user restart shepherd
-```
