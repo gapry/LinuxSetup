@@ -95,6 +95,11 @@ curl -fsSL https://chatgpt.com/codex/install.sh | sh
 npm install -g @github/copilot
 ```
 
+### Mistral Vibe
+```fish
+curl -LsSf https://mistral.ai/vibe/install.sh | bash
+```
+
 ### Herdr
 ```fish
 curl -fsSL https://herdr.dev/install.sh | sh
