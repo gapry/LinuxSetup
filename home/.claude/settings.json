@@ -1,42 +1,11 @@
 {
   "env": {
     "ANTHROPIC_BASE_URL": "http://localhost:4000",
-    "ANTHROPIC_MODEL": "claude-opus-4.5",
+    "ANTHROPIC_MODEL": "claude-opus-5.5",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "claude-fable-5.1",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-5.5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-5.5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-haiku-5.5",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
-  },
-  "models": {
-    "claude-haiku-4-5-20251001": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-haiku-4-5": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-opus-4.5": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-opus-4.6": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-opus-4-6": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-opus-4.6-fast": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-opus-41": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-sonnet-4": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-sonnet-4.5": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-sonnet-4.6": {
-      "endpoint": "http://localhost:4000/v1"
-    },
-    "claude-sonnet-4-6": {
-      "endpoint": "http://localhost:4000/v1"
-    }
   }
 }
