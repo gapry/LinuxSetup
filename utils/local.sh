@@ -14,7 +14,7 @@ mkdir -p "$backup_root"
 sync_file "$REPO_ROOT/home" "$backup_root"
 
 echo "--------------------------------------------------"
-echo -e "${GREEN}Local Test Sync Completed Successfully.${RESET}"
+echo -e "${GREEN}Local Sync Completed Successfully.${RESET}"
 echo -e "Backup saved at: ${BLUE}$backup_root${RESET}"
 echo "--------------------------------------------------"
 

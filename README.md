@@ -4,6 +4,28 @@ This repository explores maximizing the use of [XMonad](https://xmonad.org/) for
 [GNU Shepherd](https://shepherding.services/) for user service supervision
 on a popular Linux distribution with the [fish shell](https://fishshell.com/)
 
+## Install
+```sh
+curl -fsSL https://raw.githubusercontent.com/gapry/LinuxSetup/main/utils/install.sh | sh
+```
+
+## Usage 
+```sh
+make install                  # test remote installation, including packages and Home Manager initialization
+make local                    # back up and sync local home/ changes to $HOME for quick testing
+make format                   # format *.nix with nixpkgs-fmt
+make xmonad-test              # recompile and test XMonad in Xephyr
+make ubuntu                   # update apt, install Ubuntu packages, and configure group membership
+make snap                     # install packages from the Snap list
+make flatpak                  # configure Flathub and install packages from the Flatpak list
+make nixpkgs-init             # initialize Home Manager
+make nixpkgs-update           # update flake inputs and apply Home Manager configuration
+make nixpkgs-gc               # remove unreferenced Nix store paths
+make nixpkgs-channel-version  # show the configured nixpkgs version
+make nixpkgs-show-generations # list Home Manager generations
+make nixpkg-bytehound         # build Bytehound and link it at ~/.local/share/bytehound
+```
+
 ## Architecture
 
 ### Ubuntu 

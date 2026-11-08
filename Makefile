@@ -1,43 +1,20 @@
-fmt:
-	find . -path "./.git" -prune -o -name "*.nix" -exec nixpkgs-fmt {} +
+ROOT_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
-test:
-	bash ./utils/test.sh
+include $(ROOT_DIR)/pkgs/ubuntu/ubuntu.mk
+include $(ROOT_DIR)/pkgs/snap/snap.mk
+include $(ROOT_DIR)/pkgs/flatpak/flatpak.mk
+include $(ROOT_DIR)/pkgs/nix/nixpkgs.mk
 
-install: ubuntu flatpak download
+local:
+	bash "$(ROOT_DIR)/utils/local.sh"
 
-ubuntu:
-	sh ./utils/ubuntu.sh
-
-flatpak:
-	sh ./utils/flatpak.sh
-
-snap:
-	sh ./utils/snap.sh
-
-download:
-	bash ./utils/download.sh
+install:
+	sh "$(ROOT_DIR)/utils/install.sh"
 
 xmonad-test:
-	bash ./utils/xmonad-test.sh
+	bash "$(ROOT_DIR)/utils/xmonad-test.sh"
 
-nixpkgs-init:
-	fish -c 'nixpkg_init'
+format:
+	cd "$(ROOT_DIR)" && find . -path "./.git" -prune -o -name "*.nix" -exec nixpkgs-fmt {} +
 
-nixpkgs-update:
-	fish -c 'nixpkg_update'
-
-bytehound:
-	mkdir -p "$$HOME/.local/share"
-	nix build --out-link "$$HOME/.local/share/bytehound" "$$HOME/.config/home-manager#bytehound"
-
-nixpkgs-gc:
-	fish -c 'nixpkg_gc'
-
-nixpkgs-channel-version:
-	nix eval --inputs-from ~/.config/home-manager nixpkgs#lib.version 
-
-nixpkgs-show-generations:
-	home-manager generations
-
-.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update bytehound nixpkgs-gc nixpkgs-channel-version nixpkgs-show-generations
+.PHONY: local install xmonad-test format
