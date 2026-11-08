@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-6.1-terra"
 model_provider = "litellm-openai"
 
 [model_providers.litellm-openai]
