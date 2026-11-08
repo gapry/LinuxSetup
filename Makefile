@@ -27,6 +27,10 @@ nixpkgs-init:
 nixpkgs-update:
 	fish -c 'nixpkg_update'
 
+bytehound:
+	mkdir -p "$$HOME/.local/share"
+	nix build --out-link "$$HOME/.local/share/bytehound" "$$HOME/.config/home-manager#bytehound"
+
 nixpkgs-gc:
 	fish -c 'nixpkg_gc'
 
@@ -36,4 +40,4 @@ nixpkgs-channel-version:
 nixpkgs-show-generations:
 	home-manager generations
 
-.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update nixpkgs-gc nixpkgs-channel-version nixpkgs-show-generations
+.PHONY: fmt test install ubuntu flatpak snap download xmonad-test nixpkgs-init nixpkgs-update bytehound nixpkgs-gc nixpkgs-channel-version nixpkgs-show-generations

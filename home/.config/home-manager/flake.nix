@@ -38,6 +38,8 @@
       };
     in
     {
+      packages.${system}.bytehound = pkgs.callPackage ./packages/bytehound.nix { };
+
       homeConfigurations."${userConfig.username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit userConfig nixgl; };
