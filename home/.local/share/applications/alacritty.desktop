@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Alacritty
+Exec=/home/gapry/.nix-profile/bin/alacritty
+Icon=/home/gapry/.nix-profile/share/icons/hicolor/scalable/apps/Alacritty.svg
+Terminal=false
+Categories=System;TerminalEmulator;
+StartupNotify=true
+StartupWMClass=Alacritty

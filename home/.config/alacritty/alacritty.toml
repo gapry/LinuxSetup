@@ -30,7 +30,7 @@ save_to_clipboard = true
 TERM = "xterm-256color"
 COLORTERM = "truecolor"
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/fish"
 args = ["-l"]
 
