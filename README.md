@@ -95,6 +95,11 @@ curl -fsSL https://chatgpt.com/codex/install.sh | sh
 npm install -g @github/copilot
 ```
 
+### Herdr
+```fish
+curl -fsSL https://herdr.dev/install.sh | sh
+```
+
 ### LiteLLM
 ```fish
 pipx install 'litellm[proxy]'
