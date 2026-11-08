@@ -32,7 +32,7 @@ COLORTERM = "truecolor"
 
 [shell]
 program = "/usr/bin/fish"
-args = ["-l", "-c", "zellij"]
+args = ["-l"]
 
 [[keyboard.bindings]]
 chars = "\u000c"
