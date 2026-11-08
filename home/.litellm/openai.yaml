@@ -1,0 +1,50 @@
+model_list:
+  - model_name: gpt-5.4-nano
+    litellm_params:
+      model: github_copilot/gpt-5.4-nano
+      drop_params: true
+
+  - model_name: gpt-5.3-codex
+    litellm_params:
+      model: github_copilot/gpt-5.3-codex
+      drop_params: true
+
+  - model_name: gpt-5.6-luna
+    litellm_params:
+      model: github_copilot/gpt-5.6-luna
+      drop_params: true
+
+  - model_name: gpt-5.6-sol
+    litellm_params:
+      model: github_copilot/gpt-5.6-sol
+      drop_params: true
+
+  - model_name: gpt-5.6-terra
+    litellm_params:
+      model: github_copilot/gpt-5.6-terra
+      drop_params: true
+
+  - model_name: gpt-6-astra
+    litellm_params:
+      model: github_copilot/gpt-6-astra
+      drop_params: true
+
+  - model_name: gpt-6-luna
+    litellm_params:
+      model: github_copilot/gpt-6-luna
+      drop_params: true
+
+  - model_name: gpt-6-sol
+    litellm_params:
+      model: github_copilot/gpt-6-sol
+      drop_params: true
+
+  - model_name: gpt-6.1-sol
+    litellm_params:
+      model: github_copilot/gpt-6.1-sol
+      drop_params: true
+
+  - model_name: gpt-6.1-terra
+    litellm_params:
+      model: github_copilot/gpt-6.1-terra
+      drop_params: true

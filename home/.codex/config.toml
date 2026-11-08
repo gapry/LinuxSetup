@@ -1,0 +1,8 @@
+model = "gpt-5.3-codex"
+model_provider = "litellm-openai"
+
+[model_providers.litellm-openai]
+name = "LiteLLM (OpenAI)"
+base_url = "http://localhost:4001/v1"
+env_key = "LITELLM_MASTER_KEY"
+wire_api = "responses"
