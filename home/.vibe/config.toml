@@ -107,7 +107,7 @@ api_host = "https://experiments.mistral.services/"
 client_key = "sdk-OE8yJgTXZY6tj" # https://github.com/mistralai/mistral-vibe/blob/c96a6dbb34d34f8a868b3f67b279ecabbf1aa616/vibe/core/config/models.py#L69
  
 [session_logging]
-save_dir = "/home/gapry/.vibe/logs/session"
+save_dir = "~/.vibe/logs/session"
 session_prefix = "session"
 enabled = true
 
