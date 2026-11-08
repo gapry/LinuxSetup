@@ -90,6 +90,11 @@ curl -fsSL https://claude.ai/install.sh | bash
 npm install -g @github/copilot
 ```
 
+### Codex
+```fish
+npm install -g @openai/codex
+```
+
 ### LiteLLM
 ```fish
 pipx install 'litellm[proxy]'
@@ -102,10 +107,15 @@ pipx install 'litellm[proxy]'
 
 ### Shepherd
 ```fish
-herd start litellm
-herd status litellm
-herd restart litellm
-herd stop litellm
+herd start litellm-anthropic
+herd status litellm-anthropic
+herd restart litellm-anthropic
+herd stop litellm-anthropic
+
+herd start litellm-openai
+herd status litellm-openai
+herd restart litellm-openai
+herd stop litellm-openai
 ```
 
 ```fish
