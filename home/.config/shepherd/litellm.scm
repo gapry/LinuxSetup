@@ -2,10 +2,10 @@
   (ice-9 rdelim)
   (srfi srfi-1))
 
-(define litellm-service
+(define (make-litellm-service name config port log-file)
   (let ((home (getenv "HOME")))
     (service
-      '(litellm)
+      (list name)
       #:start
       (lambda ()
         (let* (
@@ -25,15 +25,15 @@
           ((make-forkexec-constructor
             (list
               (string-append home "/.local/bin/litellm")
-              "--config" (string-append home "/.litellm/anthropic.yaml")
+              "--config" (string-append home config)
               "--host" "127.0.0.1"
-              "--port" "4000")
+              "--port" port)
             #:environment-variables
             (cons (string-append prefix key)
               (filter
                 (lambda (variable)
                   (not (string-prefix? prefix variable)))
                 (default-environment-variables)))
-            #:log-file (string-append home "/.local/share/litellm.log")))))
+            #:log-file (string-append home log-file)))))
       #:stop (make-kill-destructor)
       #:respawn? #t)))

@@ -5,11 +5,14 @@
 (load (string-append config-dir "cloudflared.scm"))
 (load (string-append config-dir "redis.scm"))
 (load (string-append config-dir "litellm.scm"))
+(load (string-append config-dir "litellm_anthropic.scm"))
+(load (string-append config-dir "litellm_openai.scm"))
 
 (define services-list
   (list dns-service 
         redis-service
-        litellm-service))
+        litellm-anthropic-service
+        litellm-openai-service))
 
 (register-services services-list)
 
