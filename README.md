@@ -24,6 +24,7 @@ make nixpkgs-gc               # remove unreferenced Nix store paths
 make nixpkgs-channel-version  # show the configured nixpkgs version
 make nixpkgs-show-generations # list Home Manager generations
 make nixpkg-bytehound         # build Bytehound and link it at ~/.local/share/bytehound
+make nixpkg-graphite          # build Graphite with nixGL and link it at ~/.local/share/graphite-app
 ```
 
 ## Architecture

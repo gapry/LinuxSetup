@@ -36,14 +36,21 @@
         username = builtins.getEnv "USER";
         homeDirectory = builtins.getEnv "HOME";
       };
-    in
-    {
-      packages.${system}.bytehound = pkgs.callPackage ./packages/bytehound.nix { };
 
-      homeConfigurations."${userConfig.username}" = home-manager.lib.homeManagerConfiguration {
+      homeConfiguration = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit userConfig nixgl; };
         modules = [ ./home.nix ];
       };
+    in
+    {
+      packages.${system} = {
+        bytehound = pkgs.callPackage ./packages/bytehound.nix { };
+        graphite =
+          homeConfiguration.config.lib.nixGL.wrap
+            (pkgs.callPackage ./packages/graphite.nix { });
+      };
+
+      homeConfigurations."${userConfig.username}" = homeConfiguration;
     };
 }

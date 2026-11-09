@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Graphite
+Exec=/home/gapry/.local/share/graphite-app/bin/graphite
+Icon=/home/gapry/.local/share/graphite-app/share/icons/hicolor/scalable/apps/art.graphite.Graphite.svg
+Terminal=false
+Categories=Graphics;VectorGraphics;RasterGraphics;
+StartupWMClass=art.graphite.Graphite
