@@ -1,4 +1,4 @@
 ubuntu:
-	cd "$(ROOT_DIR)" && sh ./utils/ubuntu.sh
+	cd "$(ROOT_DIR)" && sh ./utils/os/ubuntu.sh
 
 .PHONY: ubuntu

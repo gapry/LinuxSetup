@@ -31,7 +31,7 @@ TERM = "xterm-256color"
 COLORTERM = "truecolor"
 
 [terminal.shell]
-program = "/usr/bin/fish"
+program = "fish"
 args = ["-l"]
 
 [[keyboard.bindings]]

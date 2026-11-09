@@ -17,34 +17,60 @@ if [ "$(id -u)" -eq 0 ]; then
 fi
 
 . /etc/os-release
-if [ "${ID:-}" != ubuntu ] || [ "$(uname -m)" != x86_64 ]; then
-  printf 'This installer requires Ubuntu on x86_64.\n' >&2
+os_id="${ID:-}"
+
+case "$os_id" in
+  ubuntu|nixos) ;;
+  *)
+    printf 'This installer requires Ubuntu or NixOS.\n' >&2
+    exit 1
+    ;;
+esac
+
+if [ "$(uname -m)" != x86_64 ]; then
+  printf 'This installer requires x86_64.\n' >&2
+  exit 1
+fi
+
+if [ -n "${LINUXSETUP_DIR:-}" ] && [ -n "${LINUXSETUP_REF:-}" ]; then
+  printf 'Set only one of LINUXSETUP_DIR or LINUXSETUP_REF.\n' >&2
   exit 1
 fi
 
 sudo -v </dev/null
 
-temp_dir=$(mktemp -d)
-trap 'rm -rf "$temp_dir"' 0
-trap 'exit 1' HUP INT TERM
+if [ -n "${LINUXSETUP_DIR:-}" ]; then
+  if [ ! -d "$LINUXSETUP_DIR" ]; then
+    printf 'LINUXSETUP_DIR is not a directory: %s\n' "$LINUXSETUP_DIR" >&2
+    exit 1
+  fi
+  repo_root=$(CDPATH= cd -- "$LINUXSETUP_DIR" && pwd)
+  printf '[Source] Using local configurations from %s\n' "$repo_root"
+else
+  temp_dir=$(mktemp -d)
+  trap 'rm -rf "$temp_dir"' 0
+  trap 'exit 1' HUP INT TERM
 
-upstream="https://github.com/gapry/LinuxSetup/archive/refs/heads/main.tar.gz"
-printf '[Download] Fetching configurations from %s...\n' "$upstream"
-curl -fsSL --output "$temp_dir/archive.tar.gz" "$upstream"
+  ref="${LINUXSETUP_REF:-main}"
+  upstream="https://github.com/gapry/LinuxSetup/archive/${ref}.tar.gz"
+  printf '[Download] Fetching configurations from %s...\n' "$upstream"
+  curl -fsSL --output "$temp_dir/archive.tar.gz" "$upstream"
+  tar -xzf "$temp_dir/archive.tar.gz" -C "$temp_dir" --strip-components=1
+  repo_root="$temp_dir"
+fi
 
-tar -xzf "$temp_dir/archive.tar.gz" -C "$temp_dir" --strip-components=1
+if [ ! -d "$repo_root/home" ] || [ ! -d "$repo_root/utils/os" ]; then
+  printf 'Configuration source is missing home/ or utils/os/.\n' >&2
+  exit 1
+fi
 
-bash -e -s -- "$temp_dir" <<'BASH'
+bash -e -s -- "$repo_root" "$os_id" <<'BASH'
 repo_root="$1"
+os_id="$2"
 cd "$repo_root"
 
 source "$repo_root/utils/color.sh"
 source "$repo_root/utils/sync_file.sh"
-
-if [ ! -d "$repo_root/home" ]; then
-  printf 'Downloaded archive is missing home/.\n' >&2
-  exit 1
-fi
 
 timestamp=$(date +%Y%m%d%H%M%S)
 mkdir -p "$HOME/backup/LinuxSetup"
@@ -52,12 +78,9 @@ backup_root=$(mktemp -d "$HOME/backup/LinuxSetup/install-$timestamp-XXXXXX")
 
 sync_file "$repo_root/home" "$backup_root"
 
-sh "$repo_root/utils/ubuntu.sh" </dev/null
-sh "$repo_root/utils/snap.sh" </dev/null
-sh "$repo_root/utils/flatpak.sh" </dev/null
+sh "$repo_root/utils/os/$os_id.sh" </dev/null
 
 user=$(id -un)
-# Start with refreshed supplementary groups after ubuntu.sh updates membership.
 sudo -u "$user" -- env HOME="$HOME" USER="$user" \
   nix --extra-experimental-features 'nix-command flakes' \
   run github:nix-community/home-manager/release-26.05 -- \

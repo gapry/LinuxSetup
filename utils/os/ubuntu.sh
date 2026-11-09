@@ -23,4 +23,8 @@ if getent group docker >/dev/null 2>&1 && ! groups | grep -q -w "docker"; then
   echo "Docker group membership updated. Permissions will take effect after logout."
 fi
 
+sh utils/snap.sh
+sh utils/flatpak.sh
+sh pkgs/curl/curl.sh
+
 echo "Ubuntu setup completed."
