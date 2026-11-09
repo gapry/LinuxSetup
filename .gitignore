@@ -12,6 +12,10 @@ result-*
 *.tmp
 *.log
 
+*.iso
+*.qcow2
+*.img
+
 __pycache__/
 *.py[cod]
 

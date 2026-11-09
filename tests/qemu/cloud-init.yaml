@@ -1,0 +1,19 @@
+#cloud-config
+users:
+  - name: ubuntu
+    groups: [adm, sudo]
+    shell: /bin/bash
+    lock_passwd: true
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+
+write_files:
+  - path: /etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf
+    content: |
+      [Service]
+      ExecStart=
+      ExecStart=-/sbin/agetty --autologin ubuntu --keep-baud 115200,38400,9600 %I $TERM
+
+runcmd:
+  - [systemctl, set-default, multi-user.target]
+  - [systemctl, daemon-reload]
+  - [systemctl, restart, serial-getty@ttyS0.service]
