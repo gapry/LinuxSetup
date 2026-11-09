@@ -145,6 +145,11 @@ systemctl --user restart shepherd
 ```
 
 ```fish
+herd status glances
+herd start glances
+herd restart glances
+herd stop glances
+
 herd start litellm-anthropic
 herd status litellm-anthropic
 herd restart litellm-anthropic
