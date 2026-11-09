@@ -11,7 +11,8 @@ curl -fsSL https://raw.githubusercontent.com/gapry/LinuxSetup/main/utils/install
 
 ## Usage 
 ```sh
-make qemu                     # boot an isolated Ubuntu CLI; test the installation command inside the VM
+make qemu-ubuntu              # boot the Ubuntu QEMU environment
+make qemu-nixos               # boot the NixOS QEMU environment
 make local                    # back up and sync local home/ changes to $HOME for quick testing
 make format                   # format *.nix with nixpkgs-fmt
 make xmonad-test              # recompile and test XMonad in Xephyr

@@ -4,7 +4,7 @@ set -eu
 
 test_os_url=https://cloud-images.ubuntu.com/releases/resolute/release/ubuntu-26.04-server-cloudimg-amd64.img
 
-repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/../../.." && pwd)
 cd "$repo_root"
 
 for tool in qemu-system-x86_64 qemu-img xorriso; do
@@ -20,7 +20,7 @@ if [ ! -r /dev/kvm ] || [ ! -w /dev/kvm ]; then
 fi
 
 if [ ! -t 0 ] || [ ! -t 1 ]; then
-  printf 'Run make qemu in an interactive terminal.\n' >&2
+  printf 'Run make qemu-ubuntu in an interactive terminal.\n' >&2
   exit 1
 fi
 
@@ -58,7 +58,7 @@ fi
 seed=.cache/qemu/seed.iso
 xorriso -as mkisofs -quiet -volid cidata -joliet -rock \
   -output "$seed.tmp" -graft-points \
-  user-data=tests/qemu/cloud-init.yaml meta-data=tests/qemu/instance.yaml
+  user-data=tests/qemu/ubuntu/cloud-init.yaml meta-data=tests/qemu/ubuntu/instance.yaml
 mv "$seed.tmp" "$seed"
 
 printf 'Using cloud image: %s\n' "$image"

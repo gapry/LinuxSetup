@@ -4,7 +4,8 @@ include $(ROOT_DIR)/pkgs/ubuntu/ubuntu.mk
 include $(ROOT_DIR)/pkgs/snap/snap.mk
 include $(ROOT_DIR)/pkgs/flatpak/flatpak.mk
 include $(ROOT_DIR)/pkgs/nix/nixpkgs.mk
-include $(ROOT_DIR)/tests/qemu/qemu.mk
+include $(ROOT_DIR)/tests/qemu/ubuntu/ubuntu.mk
+include $(ROOT_DIR)/tests/qemu/nixos/nixos.mk
 include $(ROOT_DIR)/tests/xmonad/xmonad.mk
 
 local:
