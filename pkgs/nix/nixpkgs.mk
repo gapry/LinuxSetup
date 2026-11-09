@@ -17,4 +17,8 @@ nixpkg-bytehound:
 	mkdir -p "$$HOME/.local/share"
 	nix build --out-link "$$HOME/.local/share/bytehound" "$$HOME/.config/home-manager#bytehound"
 
-.PHONY: nixpkgs-init nixpkgs-update nixpkgs-gc nixpkgs-channel-version nixpkgs-show-generations nixpkg-bytehound 
+nixpkg-graphite:
+	mkdir -p "$$HOME/.local/share"
+	nix build --impure --out-link "$$HOME/.local/share/graphite-app" "$$HOME/.config/home-manager#graphite"
+
+.PHONY: nixpkgs-init nixpkgs-update nixpkgs-gc nixpkgs-channel-version nixpkgs-show-generations nixpkg-bytehound nixpkg-graphite
