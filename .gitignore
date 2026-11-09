@@ -16,6 +16,9 @@ result-*
 *.qcow2
 *.img
 
+/tests/qemu/shared/*
+!/tests/qemu/shared/.gitkeep
+
 __pycache__/
 *.py[cod]
 

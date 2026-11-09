@@ -66,6 +66,8 @@ printf 'Waiting for Ubuntu to initialize and log in as ubuntu.\n'
 printf 'Changes are saved in: %s\n' "$disk"
 printf 'To shut down: sudo poweroff. To exit immediately: Ctrl+a, then x.\n'
 
+sh "$repo_root/tests/qemu/sync_shared.sh"
+
 exec qemu-system-x86_64 \
   -enable-kvm \
   -cpu host \
@@ -74,4 +76,5 @@ exec qemu-system-x86_64 \
   -drive "file=$disk,format=qcow2,if=virtio" \
   -drive "file=$seed,format=raw,media=cdrom,readonly=on" \
   -nic user,model=virtio-net-pci \
+  -virtfs "local,path=$repo_root/tests/qemu/shared,mount_tag=shared,security_model=none,readonly=on" \
   -nographic

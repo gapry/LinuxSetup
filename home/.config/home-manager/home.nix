@@ -17,5 +17,5 @@
     in
     map (name: ./. + "/${name}") (builtins.filter isModule files);
 
-  targets.genericLinux.enable = true;
+  targets.genericLinux.enable = !builtins.pathExists /etc/NIXOS;
 }
