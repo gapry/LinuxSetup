@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/gapry/LinuxSetup/main/utils/install
 
 ## Usage 
 ```sh
-make install                  # test remote installation, including packages and Home Manager initialization
+make qemu                     # boot an isolated Ubuntu CLI; test the installation command inside the VM
 make local                    # back up and sync local home/ changes to $HOME for quick testing
 make format                   # format *.nix with nixpkgs-fmt
 make xmonad-test              # recompile and test XMonad in Xephyr
