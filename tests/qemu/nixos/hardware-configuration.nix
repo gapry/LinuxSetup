@@ -25,7 +25,7 @@
     sharedDirectories.linuxsetup = {
       source = "\"$LINUXSETUP_SHARED\"";
       target = "/mnt/shared";
-      securityModel = "none";
+      securityModel = "mapped-xattr";
     };
   };
 }

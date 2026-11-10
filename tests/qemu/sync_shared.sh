@@ -9,6 +9,9 @@ target_dir="$shared_dir/LinuxSetup"
 mkdir -p "$shared_dir"
 rm -rf "$target_dir"
 mkdir -p "$target_dir"
+: > "$shared_dir/test.log"
+chmod 666 "$shared_dir/test.log"
+chmod 777 "$shared_dir"
 
 tar -C "$repo_root" \
   --exclude=./.git \

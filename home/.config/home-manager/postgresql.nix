@@ -35,8 +35,8 @@ in
   };
 
   home.activation.setupPostgres =
-    config.lib.dag.entryAfter [ "writeBoundary" ] ''
-      if [ ! -d "${dataDir}" ]; then
+    config.lib.dag.entryBetween [ "reloadSystemd" ] [ "writeBoundary" ] ''
+      if [ ! -f "${dataDir}/PG_VERSION" ]; then
         ${postgre}/bin/initdb -D "${dataDir}"
       fi
     '';

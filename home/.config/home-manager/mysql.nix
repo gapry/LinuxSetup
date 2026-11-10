@@ -48,8 +48,9 @@ in
   };
 
   home.activation.setupMysql =
-    config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    config.lib.dag.entryBetween [ "reloadSystemd" ] [ "writeBoundary" ] ''
       if [ ! -d "${dataDir}/mysql" ]; then
+        ${pkgs.coreutils}/bin/mkdir -p "${dataDir}" "${runtimeDir}"
         ${mysql}/bin/mysqld \
           --defaults-file=${myCnf} \
           --initialize-insecure \
