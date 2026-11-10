@@ -10,7 +10,7 @@ disk="$cache_dir/test.qcow2"
 sh "$repo_root/tests/qemu/sync_shared.sh"
 runner=$(sh "$test_dir/build.sh")
 
-rm -f "$disk" "$repo_root/tests/qemu/shared/test.log"
+rm -f "$disk"
 
 printf 'Fresh VM disk: %s\n' "$disk"
 printf 'The test runs in a terminal inside the VM. Log: %s\n' "$repo_root/tests/qemu/shared/test.log"

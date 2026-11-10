@@ -15,13 +15,17 @@ coursier_jvm="temurin:1.25.0.2"
 
 mkdir -p "$coursier_bin"
 
-echo "Installing coursier..."
-curl -fL "$coursier_url" | gzip -d > "$coursier_bin/cs.tmp"
-chmod +x "$coursier_bin/cs.tmp"
-mv "$coursier_bin/cs.tmp" "$coursier_bin/cs"
+if [ -x "$coursier_bin/cs" ]; then
+  echo "Coursier is already installed."
+else
+  echo "Installing coursier..."
+  curl -fL "$coursier_url" | gzip -d > "$coursier_bin/cs.tmp"
+  chmod +x "$coursier_bin/cs.tmp"
+  mv "$coursier_bin/cs.tmp" "$coursier_bin/cs"
+fi
 
 echo "Installing JVM $coursier_jvm..."
-"$coursier_bin/cs" setup --yes --env --jvm "$coursier_jvm" --install-dir "$coursier_bin" >/dev/null
+"$coursier_bin/cs" java-home --jvm "$coursier_jvm" >/dev/null
 
 echo "Coursier setup completed."
 

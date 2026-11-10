@@ -1,0 +1,38 @@
+#cloud-config
+users:
+  - name: ubuntu
+    groups: [adm, sudo]
+    shell: /bin/bash
+    lock_passwd: true
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+
+mounts:
+  - [shared, /mnt/shared, 9p, "trans=virtio,version=9p2000.L,nofail", "0", "0"]
+
+write_files:
+  - path: /etc/sudoers.d/90-linuxsetup
+    permissions: "0440"
+    content: |
+      ubuntu ALL=(ALL) NOPASSWD:ALL
+  - path: /etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf
+    content: |
+      [Service]
+      ExecStart=
+      ExecStart=-/sbin/agetty --autologin ubuntu --keep-baud 115200,38400,9600 %I $TERM
+  - path: /etc/profile.d/linuxsetup-test.sh
+    content: |
+      if [ "$(id -un)" = ubuntu ] && [ "$(tty)" = /dev/ttyS0 ] && [ ! -e /run/linuxsetup-test-started ]; then
+        if cloud-init status --wait >/dev/null 2>&1 && [ -x /mnt/shared/LinuxSetup/tests/qemu/ubuntu/guest-test.sh ]; then
+          touch /run/linuxsetup-test-started
+          sh /mnt/shared/LinuxSetup/tests/qemu/ubuntu/guest-test.sh 2>&1 | tee /mnt/shared/test.log
+          printf '\nTest finished. Log saved to /mnt/shared/test.log. Shut down with: sudo poweroff\n'
+        else
+          printf '\nShared directory is not ready. Log out and log in again to retry.\n'
+        fi
+      fi
+
+runcmd:
+  - [systemctl, set-default, multi-user.target]
+  - [mount, -a]
+  - [systemctl, daemon-reload]
+  - [systemctl, restart, serial-getty@ttyS0.service]

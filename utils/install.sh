@@ -37,7 +37,7 @@ if [ -n "${LINUXSETUP_DIR:-}" ] && [ -n "${LINUXSETUP_REF:-}" ]; then
   exit 1
 fi
 
-sudo -v </dev/null
+sudo -n true 2>/dev/null || sudo -v </dev/null
 
 if [ -n "${LINUXSETUP_DIR:-}" ]; then
   if [ ! -d "$LINUXSETUP_DIR" ]; then
@@ -82,8 +82,8 @@ sh "$repo_root/utils/os/$os_id.sh" </dev/null
 
 user=$(id -un)
 sudo -u "$user" -- env HOME="$HOME" USER="$user" \
-  nix --extra-experimental-features 'nix-command flakes' \
-  run github:nix-community/home-manager/release-26.05 -- \
+  NIX_CONFIG="experimental-features = nix-command flakes" \
+  nix run github:nix-community/home-manager/release-26.05 -- \
   switch -b "$(basename "$backup_root")" \
   --flake "$HOME/.config/home-manager/#$user" --impure --option http2 false </dev/null
 

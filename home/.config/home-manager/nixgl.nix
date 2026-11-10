@@ -2,6 +2,7 @@
 
 let
   isNixOS = builtins.pathExists /etc/NIXOS;
+  hasNvidia = builtins.pathExists /proc/driver/nvidia/version;
 
   # nixpkgs 26.05 removed the NVIDIA kernel argument (nix-community/nixGL#223).
   # https://github.com/nix-community/nixGL/pull/223
@@ -17,6 +18,6 @@ in
       if isNixOS then null
       else import patchedNixGL { inherit pkgs; };
 
-    defaultWrapper = "nvidia";
+    defaultWrapper = if hasNvidia then "nvidia" else "mesa";
   };
 }
