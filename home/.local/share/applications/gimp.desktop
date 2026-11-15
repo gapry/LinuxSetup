@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GIMP
+Exec=/home/gapry/.nix-profile/bin/gimp %U
+Icon=/home/gapry/.nix-profile/share/icons/hicolor/scalable/apps/gimp.svg
+Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics;
+StartupNotify=true
+StartupWMClass=gimp
