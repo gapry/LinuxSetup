@@ -1,43 +1,30 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 let
-  postgre = pkgs.postgresql_18;
+  postgresql = pkgs.postgresql_18;
   dataDir = "${config.home.homeDirectory}/.local/share/postgresql";
   socketDir = "${config.home.homeDirectory}/.local/run/postgres";
+  settings = ../../settings/postgresql;
+  postgresqlConfig = pkgs.replaceVars (settings + "/postgresql.conf") {
+    socketDir = lib.replaceStrings [ "\\" "'" ] [ "\\\\" "\\'" ] socketDir;
+    hbaFile = "${settings}/pg_hba.conf";
+  };
+  setupArgs = lib.escapeShellArgs [
+    "${postgresql}/bin"
+    dataDir
+    socketDir
+  ];
 in
 {
   home.packages = [
-    postgre
+    postgresql
   ];
 
-  systemd.user.services.postgresql = {
-    Unit = {
-      Description = "PostgreSQL database server";
-      After = [ "network.target" ];
-    };
-
-    Service = {
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${socketDir}";
-      ExecStart = "${postgre}/bin/postgres -D ${dataDir} -k ${socketDir}";
-      ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
-
-      KillMode = "mixed";
-      KillSignal = "SIGINT";
-
-      TimeoutStopSec = "infinity";
-
-      Environment = "LC_ALL=C";
-    };
-
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
+  xdg.configFile."postgresql/postgresql.conf".source = postgresqlConfig;
 
   home.activation.setupPostgres =
     config.lib.dag.entryBetween [ "reloadSystemd" ] [ "writeBoundary" ] ''
-      if [ ! -f "${dataDir}/PG_VERSION" ]; then
-        ${postgre}/bin/initdb -D "${dataDir}"
-      fi
+      PATH=${lib.escapeShellArg (lib.makeBinPath [ pkgs.coreutils ])} \
+        ${pkgs.bash}/bin/bash ${settings + "/setup.sh"} ${setupArgs}
     '';
 }

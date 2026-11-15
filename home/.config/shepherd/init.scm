@@ -6,6 +6,7 @@
 (load (string-append config-dir "redis.scm"))
 (load (string-append config-dir "glances.scm"))
 (load (string-append config-dir "mysql.scm"))
+(load (string-append config-dir "postgresql.scm"))
 (load (string-append config-dir "litellm.scm"))
 (load (string-append config-dir "litellm_anthropic.scm"))
 (load (string-append config-dir "litellm_openai.scm"))
@@ -15,6 +16,7 @@
         redis-service
         glances-service
         mysql-service
+        postgresql-service
         litellm-anthropic-service
         litellm-openai-service))
 
