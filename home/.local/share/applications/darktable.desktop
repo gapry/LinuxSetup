@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Darktable
+Exec=/home/gapry/.nix-profile/bin/darktable %U
+Icon=/nix/store/7bx6c48wnsqxpxz32nkzfvihnsydczh2-darktable-5.4.1/share/icons/hicolor/scalable/apps/darktable.svg
+Terminal=false
+Categories=Graphics;Photography;GTK;
+StartupNotify=true
+StartupWMClass=darktable
