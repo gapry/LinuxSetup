@@ -10,11 +10,17 @@
       modulesIn = directory:
         let
           content = builtins.readDir directory;
+          names = builtins.attrNames content;
           modules = builtins.filter
             (name: lib.hasSuffix ".nix" name && content.${name} == "regular")
-            (builtins.attrNames content);
+            names;
+          directories = builtins.filter
+            (name: content.${name} == "directory")
+            names;
         in
-        map (name: directory + "/${name}") modules;
+        map (name: directory + "/${name}") modules ++
+        builtins.concatLists
+          (map (name: modulesIn (directory + "/${name}")) directories);
     in
     [ ./home-manager.nix ./nix.nix ./nixgl.nix ] ++
     modulesIn (./. + "/free") ++
