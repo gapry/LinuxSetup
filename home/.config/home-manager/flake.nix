@@ -19,11 +19,22 @@
   outputs = { nixpkgs, nixpkgs-unstable, nixgl, home-manager, ... }:
     let
       system = "x86_64-linux";
+      unfreeDirectory = ./unfree;
+      unfreeFiles = nixpkgs.lib.filterAttrs
+        (name: type: type == "regular" && nixpkgs.lib.hasSuffix ".nix" name)
+        (builtins.readDir unfreeDirectory);
+      unfreePackageNames = map
+        (name: nixpkgs.lib.removeSuffix ".nix" name)
+        (builtins.attrNames unfreeFiles);
 
       pkgs = import nixpkgs {
         inherit system;
 
-        config.allowUnfreePredicate = pkg: nixpkgs.lib.getName pkg == "nvidia";
+        config.allowUnfreePredicate = pkg:
+          let
+            packageName = nixpkgs.lib.getName pkg;
+          in
+          packageName == "nvidia" || builtins.elem packageName unfreePackageNames;
 
         overlays = [
           (final: prev: {
