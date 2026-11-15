@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Krita
+Exec=/home/gapry/.nix-profile/bin/krita %U
+Icon=/home/gapry/.nix-profile/share/icons/hicolor/512x512/apps/krita.png
+Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics;
+StartupNotify=true
+StartupWMClass=krita
