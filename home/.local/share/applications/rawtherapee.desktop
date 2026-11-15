@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=RawTherapee
+Exec=/home/gapry/.nix-profile/bin/rawtherapee %F
+Icon=/nix/store/nfl8sca8ma371zca4in7sdkbr51gxwlw-rawtherapee-5.12/share/icons/hicolor/scalable/apps/rawtherapee.svg
+Terminal=false
+Categories=Graphics;Photography;RasterGraphics;
+StartupNotify=true
