@@ -63,8 +63,8 @@ make qemu-nixos-test                # boot the NixOS VM and run install.sh again
         |                                         |
    ~/.xsession                                    |
         |                                      Shepherd
-     XMonad                                       +-- PostgreSQL (manual)
-        |                                         +-- MySQL (manual)
+     XMonad                                       +-- PostgreSQL
+        |                                         +-- MySQL
    +----+-----+                                   +-- Redis
    |    |     |                                   +-- cloudflared
 xmobar GUI  Alacritty                             +-- LiteLLM
