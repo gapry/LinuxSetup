@@ -56,10 +56,10 @@
     in
     {
       packages.${system} = {
-        bytehound = pkgs.callPackage ./packages/bytehound.nix { };
+        bytehound = pkgs.callPackage ./derivations/bytehound.nix { };
         graphite =
           homeConfiguration.config.lib.nixGL.wrap
-            (pkgs.callPackage ./packages/graphite.nix { });
+            (pkgs.callPackage ./derivations/graphite.nix { });
       };
 
       homeConfigurations."${userConfig.username}" = homeConfiguration;
