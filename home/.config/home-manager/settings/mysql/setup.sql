@@ -1,0 +1,15 @@
+INSTALL PLUGIN auth_socket SONAME 'auth_socket.so';
+SET @account = CONCAT(QUOTE(@username), '@', QUOTE('localhost'));
+SET @statement = CONCAT('CREATE USER ', @account, ' IDENTIFIED WITH auth_socket');
+PREPARE stmt FROM @statement;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET @statement = CONCAT('GRANT ALL PRIVILEGES ON *.* TO ', @account, ' WITH GRANT OPTION');
+PREPARE stmt FROM @statement;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET @statement = CONCAT('GRANT PROXY ON ', QUOTE(SUBSTRING('x', 2)), '@', QUOTE(SUBSTRING('x', 2)), ' TO ', @account, ' WITH GRANT OPTION');
+PREPARE stmt FROM @statement;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+ALTER USER 'root'@'localhost' ACCOUNT LOCK;

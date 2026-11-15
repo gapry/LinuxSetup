@@ -61,13 +61,13 @@ make qemu-nixos-test                # boot the NixOS VM and run install.sh again
         |                                         |
    DESKTOP (X11)                            systemd --user
         |                                         |
-   ~/.xsession                    +---------------+---------------+
-        |                         |               |               |
-     XMonad                     MySQL         PostgreSQL       Shepherd
-        |                                                         |
-   +----+-----+                                          +--------+--------+
-   |    |     |                                          |        |        |
-xmobar GUI  Alacritty                                  Redis   cloudflared  LiteLLM
+   ~/.xsession                         +----------+----------+
+        |                              |                     |
+     XMonad                        PostgreSQL             Shepherd
+        |                                                    |
+   +----+-----+                             +--------+-------+--------+
+   |    |     |                             |        |       |        |
+xmobar GUI  Alacritty                     MySQL    Redis  cloudflared  LiteLLM
               |
             Fish
               |
@@ -294,6 +294,10 @@ herd start glances
 herd restart glances
 herd stop glances
 
+herd start mysql
+herd status mysql
+herd stop mysql
+
 herd start litellm-anthropic
 herd status litellm-anthropic
 herd restart litellm-anthropic
@@ -304,4 +308,3 @@ herd status litellm-openai
 herd restart litellm-openai
 herd stop litellm-openai
 ```
-

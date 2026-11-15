@@ -5,6 +5,7 @@
 (load (string-append config-dir "cloudflared.scm"))
 (load (string-append config-dir "redis.scm"))
 (load (string-append config-dir "glances.scm"))
+(load (string-append config-dir "mysql.scm"))
 (load (string-append config-dir "litellm.scm"))
 (load (string-append config-dir "litellm_anthropic.scm"))
 (load (string-append config-dir "litellm_openai.scm"))
@@ -13,6 +14,7 @@
   (list dns-service 
         redis-service
         glances-service
+        mysql-service
         litellm-anthropic-service
         litellm-openai-service))
 
