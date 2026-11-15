@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ../nixgl.nix ];
+  imports = [ ../../nixgl.nix ];
 
   home.packages = [
     (config.lib.nixGL.wrap pkgs.alacritty)
