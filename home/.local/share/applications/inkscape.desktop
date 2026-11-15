@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Inkscape
+Exec=/home/gapry/.nix-profile/bin/inkscape %F
+Icon=/nix/store/b03czfj9fs5wd84ybx90kqymsgflx0lb-inkscape-1.4.4/share/icons/hicolor/scalable/apps/org.inkscape.Inkscape.svg
+Terminal=false
+Categories=Graphics;2DGraphics;VectorGraphics;
+StartupNotify=true
