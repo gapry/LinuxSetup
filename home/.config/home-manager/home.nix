@@ -7,21 +7,18 @@
 
   imports =
     let
-      content = builtins.readDir ./.;
-      files = builtins.attrNames content;
-      unfreeDirectory = ./. + "/unfree";
-      unfreeContent = builtins.readDir unfreeDirectory;
-      unfreeModules = builtins.filter
-        (name: lib.hasSuffix ".nix" name && unfreeContent.${name} == "regular")
-        (builtins.attrNames unfreeContent);
-      isModule = name:
-        name != "home.nix" &&
-        name != "flake.nix" &&
-        lib.hasSuffix ".nix" name &&
-        content.${name} == "regular";
+      modulesIn = directory:
+        let
+          content = builtins.readDir directory;
+          modules = builtins.filter
+            (name: lib.hasSuffix ".nix" name && content.${name} == "regular")
+            (builtins.attrNames content);
+        in
+        map (name: directory + "/${name}") modules;
     in
-    map (name: ./. + "/${name}") (builtins.filter isModule files) ++
-    map (name: unfreeDirectory + "/${name}") unfreeModules;
+    [ ./home-manager.nix ./nix.nix ./nixgl.nix ] ++
+    modulesIn (./. + "/free") ++
+    modulesIn (./. + "/unfree");
 
   targets.genericLinux.enable = !builtins.pathExists /etc/NIXOS;
 }
