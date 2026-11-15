@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Blender
+Exec=/home/gapry/.nix-profile/bin/blender %F
+Icon=/home/gapry/.nix-profile/share/icons/hicolor/scalable/apps/blender.svg
+Terminal=false
+Categories=Graphics;3DGraphics;
+StartupNotify=true
+StartupWMClass=Blender
