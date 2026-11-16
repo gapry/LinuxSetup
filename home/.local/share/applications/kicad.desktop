@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=KiCad
-Exec=/home/gapry/.nix-profile/bin/kicad %f
-Icon=/home/gapry/.nix-profile/share/icons/hicolor/scalable/apps/kicad.svg
+Exec=$HOME/.nix-profile/bin/kicad %f
+Icon=$HOME/.nix-profile/share/icons/hicolor/scalable/apps/kicad.svg
 Terminal=false
 Categories=Development;Electronics;
 StartupNotify=true

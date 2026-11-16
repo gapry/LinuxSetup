@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=Kdenlive
-Exec=/home/gapry/.nix-profile/bin/kdenlive %F
-Icon=/nix/store/1nldd7f2prbpwqparnkwax8vrpg0j1bx-kdenlive-26.04.3/share/icons/hicolor/scalable/apps/kdenlive.svg
+Exec=$HOME/.nix-profile/bin/kdenlive %F
+Icon=$HOME/.nix-profile/share/icons/hicolor/scalable/apps/kdenlive.svg
 Terminal=false
 Categories=AudioVideo;Video;AudioVideoEditing;
 StartupNotify=true

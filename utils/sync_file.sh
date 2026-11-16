@@ -24,6 +24,8 @@ sync_file() {
     echo -e "  ${BLUE}[Synced]${RESET} $file -> $target_file"
   done
 
+  sh "$(dirname "${BASH_SOURCE[0]}")/update_desktop_files.sh" "$src_root"
+
   local dir_applications="$HOME/.local/share/applications"
   if [ -d "$dir_applications" ] && command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database "$dir_applications"

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=Discord
-Exec=/home/gapry/.nix-profile/bin/Discord --ozone-platform=x11 %U
-Icon=/nix/store/6l8grss9np2pg320npff44ydn41712ij-discord-1.0.159/opt/Discord/discord.png
+Exec=$HOME/.nix-profile/bin/Discord --ozone-platform=x11 %U
+Icon=$HOME/.nix-profile/share/icons/hicolor/256x256/apps/discord.png
 Terminal=false
 Categories=Network;InstantMessaging;
 StartupNotify=true
