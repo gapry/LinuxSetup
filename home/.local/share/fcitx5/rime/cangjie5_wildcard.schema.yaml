@@ -1,0 +1,21 @@
+schema:
+  schema_id: cangjie5_wildcard
+  name: cangjie5_wildcard
+  version: "1.0"
+
+speller:
+  algebra:
+    - "derive/^([a-z])[a-z]([a-z]*)$/$1*$2/"
+    - "derive/^([a-z])[a-z]{2}([a-z]*)$/$1*$2/"
+    - "derive/^([a-z])[a-z]{3}([a-z]*)$/$1*$2/"
+    - "derive/^([a-z])[a-z]{4}([a-z]*)$/$1*$2/"
+    - "derive/^([a-z]{2})[a-z]([a-z]*)$/$1*$2/"
+    - "derive/^([a-z]{2})[a-z]{2}([a-z]*)$/$1*$2/"
+    - "derive/^([a-z]{2})[a-z]{3}([a-z]*)$/$1*$2/"
+    - "derive/^([a-z]{3})[a-z]([a-z]*)$/$1*$2/"
+    - "derive/^([a-z]{3})[a-z]{2}([a-z]*)$/$1*$2/"
+    - "derive/^([a-z]{4})[a-z]([a-z]*)$/$1*$2/"
+
+translator:
+  dictionary: cangjie5
+  prism: cangjie5_wildcard
