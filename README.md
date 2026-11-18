@@ -22,7 +22,8 @@ make nixos                          # deploy etc/nixos to /etc/nixos and run nix
 make snap                           # install packages from the Snap list
 make flatpak                        # configure Flathub and install packages from the Flatpak list
 make curl                           # install coursier and the Temurin JVM
-make pip                            # install Python CLI tools with pip
+make pip                            # install Python CLI tools with pipx
+make npm                            # install global npm packages
 ```
 
 ### Home Manager
@@ -261,11 +262,6 @@ curl -fsSL https://claude.ai/install.sh | bash
 #### Codex
 ```fish
 curl -fsSL https://chatgpt.com/codex/install.sh | sh
-```
-
-#### GitHub Copilot CLI
-```fish
-npm install -g @github/copilot
 ```
 
 #### Mistral Vibe
