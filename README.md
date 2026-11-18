@@ -252,28 +252,6 @@ OPENCLAW_CHANNELS_TELEGRAM_BOT_TOKEN=
 OPENCLAW_CHANNELS_TELEGRAM_ALLOW_USERS_ID=
 ```
 
-### Coding Agents
-
-#### Claude Code
-```fish
-curl -fsSL https://claude.ai/install.sh | bash
-```
-
-#### Codex
-```fish
-curl -fsSL https://chatgpt.com/codex/install.sh | sh
-```
-
-#### Mistral Vibe
-```fish
-curl -LsSf https://mistral.ai/vibe/install.sh | bash
-```
-
-#### Herdr
-```fish
-curl -fsSL https://herdr.dev/install.sh | sh
-```
-
 ### Shepherd
 ```fish
 systemctl --user restart shepherd

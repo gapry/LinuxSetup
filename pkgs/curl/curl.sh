@@ -29,3 +29,19 @@ echo "Installing JVM $coursier_jvm..."
 
 echo "Coursier setup completed."
 
+curl -fsSL https://claude.ai/install.sh | bash
+
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+
+curl -LsSf https://mistral.ai/vibe/install.sh | bash
+
+curl -fsSL https://agentty.org/install.sh | sh 
+
+curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash
+
+curl -fsSL https://ollama.com/install.sh | sh
+
+curl -fsSL https://opencode.ai/v2/install | bash
+
+curl -fsSL https://herdr.dev/install.sh | sh
+
