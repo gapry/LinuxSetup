@@ -252,32 +252,28 @@ OPENCLAW_CHANNELS_TELEGRAM_BOT_TOKEN=
 OPENCLAW_CHANNELS_TELEGRAM_ALLOW_USERS_ID=
 ```
 
-### Shepherd
+### GNU Shepherd
+
+#### List all services
 ```fish
-systemctl --user restart shepherd
+herd status
 ```
 
-```fish
+#### Usage
+```text
+herd [status | start | restart | stop] <service name>
+```
+
+#### Example
+```
 herd status glances
 herd start glances
 herd restart glances
 herd stop glances
-
-herd start mysql
-herd status mysql
-herd stop mysql
-
-herd start postgresql
-herd status postgresql
-herd stop postgresql
-
-herd start litellm-anthropic
-herd status litellm-anthropic
-herd restart litellm-anthropic
-herd stop litellm-anthropic
-
-herd start litellm-openai
-herd status litellm-openai
-herd restart litellm-openai
-herd stop litellm-openai
 ```
+
+#### Restart Shepherd
+```fish
+systemctl --user restart shepherd
+```
+
