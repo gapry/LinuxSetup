@@ -277,3 +277,19 @@ herd stop glances
 systemctl --user restart shepherd
 ```
 
+### XMonad
+
+| Shortcut        | Description                         |
+| --------------- | ----------------------------------- |
+| `Super`         | X11 Mod4: left or right Windows key |
+| `Super+W`       | Focus screen 0                      |
+| `Super+E`       | Focus screen 1                      |
+| `Super+Shift+W` | Move the focused window to screen 0 |
+| `Super+Shift+E` | Move the focused window to screen 1 |
+| `Super+S`       | Open Firefox                        |
+| `Super+Enter`   | Open Alacritty                      |
+| `Super+Space`   | Switch to the next layout           |
+| `Super+Q`       | Recompile and restart XMonad        |
+| `Super+P`       | Open the Rofi application launcher  |
+| `Super+Shift+X` | Open the system menu                |
+
