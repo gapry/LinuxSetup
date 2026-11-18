@@ -4,6 +4,7 @@ include $(ROOT_DIR)/pkgs/ubuntu/ubuntu.mk
 include $(ROOT_DIR)/pkgs/snap/snap.mk
 include $(ROOT_DIR)/pkgs/flatpak/flatpak.mk
 include $(ROOT_DIR)/pkgs/curl/curl.mk
+include $(ROOT_DIR)/pkgs/pip/pip.mk
 include $(ROOT_DIR)/pkgs/nix/nixpkgs.mk
 include $(ROOT_DIR)/pkgs/nixos/nixos.mk
 include $(ROOT_DIR)/tests/qemu/ubuntu/ubuntu.mk
