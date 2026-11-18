@@ -15,9 +15,14 @@ curl -fsSL https://raw.githubusercontent.com/gapry/LinuxSetup/main/utils/install
 ```sh
 make ubuntu                         # update apt, install Ubuntu packages, and configure group membership
 make nixos                          # deploy etc/nixos to /etc/nixos and run nixos-rebuild switch
+```
+
+#### Packages 
+```sh
 make snap                           # install packages from the Snap list
 make flatpak                        # configure Flathub and install packages from the Flatpak list
 make curl                           # install coursier and the Temurin JVM
+make pip                            # install Python CLI tools with pip
 ```
 
 ### Home Manager
@@ -271,16 +276,6 @@ curl -LsSf https://mistral.ai/vibe/install.sh | bash
 #### Herdr
 ```fish
 curl -fsSL https://herdr.dev/install.sh | sh
-```
-
-#### LiteLLM
-```fish
-pipx install 'litellm[proxy]'
-```
-
-```fish
-~/.local/share/pipx/venvs/litellm/bin/python -c \
-  'from litellm.llms.github_copilot.authenticator import Authenticator; Authenticator().get_api_key(); print("Copilot credentials are ready")'
 ```
 
 ### Shepherd
