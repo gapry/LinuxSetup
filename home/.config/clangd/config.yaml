@@ -1,2 +1,2 @@
 CompileFlags:
-  CompilationDatabase: "build"
+  CompilationDatabase: Ancestors # https://clangd.llvm.org/config#compilationdatabase
